@@ -25,3 +25,9 @@
   width: 300px;
   height: 20px;
 }
+
+.radioMonatBezahlung {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
