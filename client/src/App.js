@@ -24,16 +24,23 @@ function App() {
 
       <br></br>
 
-      <div className="radioMonatBezahlung">
+      <div className="monatBezahlung">
         <div className="radio2">
           <input type="radio" name="bezAnfMonat" value="bezAnfMonat" />
-          <label>bez. Annfang Monat</label>
+          <label>Bez. Annfang Monat</label>
         </div>
 
         <div className="radio3">
           <input type="radio" name="bezEndMonat" value="bezEndMonat" />
-          <label>bez. Ende Monat</label>
+          <label>Bez. Ende Monat</label>
         </div>
+      </div>
+
+      <br></br>
+
+      <div className="monatBezahlung">
+        <label> Wie viele Monate wollen sie sparen? </label>
+        <input type="number" />
       </div>
     </div>
   );

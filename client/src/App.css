@@ -26,7 +26,7 @@
   height: 20px;
 }
 
-.radioMonatBezahlung {
+.monatBezahlung {
   display: flex;
   flex-direction: row;
   justify-content: center;
