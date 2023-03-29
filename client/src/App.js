@@ -44,6 +44,18 @@ function App() {
         <label> Wie viele Monate wollen sie sparen? </label>
         <input type="number" />
       </div>
+
+      <div className="jahreBezahlung">
+        <label> Wie viel möchten Sie im Jahr sparen? </label>
+        <input type="number" />
+      </div>
+
+      <div className="radio4">
+        <input type="radio" name="bezAnfJahr" value="bezAnfJahr" />
+        <label>Bez. Anfang jahr</label>
+        <input type="radio" name="bezEndJahr" value="bezEndJahr" />
+        <label>Bez. Ende Jahr</label>
+      </div>
     </div>
   );
 }
