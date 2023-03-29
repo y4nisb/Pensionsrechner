@@ -13,6 +13,8 @@ function App() {
       <div className="radio1">
         <input type="radio" name="monatlich" value="monatlich" />
         <label>Monatlich zahlen</label>
+        <input type="radio" name="jährlich" value="jährlich" />
+        <label>Jährlich zahlen</label>
       </div>
 
       <br></br>
