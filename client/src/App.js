@@ -57,8 +57,22 @@ function App() {
         <label>Bez. Ende Jahr</label>
       </div>
 
+      <div className="outputAusrechnen">
+        <p id="output"></p>
+      </div>
+
       <div className="berechnenButton">
-        <button name="berechnen">berechnen</button>
+        <button onClick={(event)=>{        
+          const inputs = document.querySelectorAll('input')
+          //const kapital = inputs[0].value;
+          const sparbetrag = inputs[3].value;
+          const anzMonate = inputs[6].value;
+          //const sparbetragJahr = inputs[7].value;
+          const textoutput = document.getElementById('output');
+          const rueckgabe = "Sie hätten "+ sparbetrag * anzMonate+ " mit uns Gespart!"
+          textoutput.textContent=(rueckgabe);
+        }}
+        name="berechnen">berechnen</button>
       </div>
     </div>
   );
