@@ -56,6 +56,10 @@ function App() {
         <input type="radio" name="bezEndJahr" value="bezEndJahr" />
         <label>Bez. Ende Jahr</label>
       </div>
+
+      <div className="berechnenButton">
+        <button name="berechnen">berechnen</button>
+      </div>
     </div>
   );
 }
