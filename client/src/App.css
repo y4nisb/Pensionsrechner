@@ -1,29 +1,14 @@
+html{
+  margin-top: 10px;
+}
+
 .App {
+  font-family: Arial, sans-serif;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-.input1 {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.input2 {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.inputs1 input {
-  width: 300px;
-  height: 20px;
-}
-.inputs2 input {
-  width: 300px;
-  height: 20px;
+  font-size: 120%;
 }
 
 .monatBezahlung {
@@ -31,3 +16,23 @@
   flex-direction: row;
   justify-content: center;
 }
+
+.input input, .berechnenButton button{
+  background-color: rgb(175, 172, 172);
+  padding: 0;
+  border: 0;
+  width: 120px;
+  height: 24px;
+  margin-left: 5px;
+}
+
+body {
+  background: linear-gradient(to right, #5886FA, #9BA7E0, #A7AEF5);
+}
+
+.berechnenButton button{
+  width: 300px;
+  height: 50px;
+  font-size: 120%;
+}
+

@@ -3,7 +3,11 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <div className="input1">
+      <div className="titel">
+          <h1>Pensionsrechner</h1>
+      </div>
+
+      <div className="input">
         <label> Geben Sie ihr aktuelles Kapital an</label>
         <input type="number" />
       </div>
@@ -19,7 +23,7 @@ function App() {
 
       <br></br>
 
-      <div className="input2">
+      <div className="input">
         <label> Wie viel möchten Sie monatlich sparen? </label>
         <input type="number" />
       </div>
@@ -40,15 +44,19 @@ function App() {
 
       <br></br>
 
-      <div className="monatBezahlung">
+      <div className="input">
         <label> Wie viele Monate wollen sie sparen? </label>
         <input type="number" />
       </div>
 
-      <div className="jahreBezahlung">
+      <br></br>
+
+      <div className="input">
         <label> Wie viel möchten Sie im Jahr sparen? </label>
         <input type="number" />
       </div>
+
+      <br></br>
 
       <div className="radio4">
         <input type="radio" name="bezAnfJahr" value="bezAnfJahr" />
@@ -72,7 +80,7 @@ function App() {
           const rueckgabe = "Sie hätten "+ sparbetrag * anzMonate+ " mit uns Gespart!"
           textoutput.textContent=(rueckgabe);
         }}
-        name="berechnen">berechnen</button>
+        name="berechnen">Berechnen</button>
       </div>
     </div>
   );
