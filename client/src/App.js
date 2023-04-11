@@ -4,7 +4,7 @@ function App() {
   return (
     <div className="App">
       <div className="titel">
-          <h1>Pensionsrechner</h1>
+        <h1>Pensionsrechner</h1>
       </div>
 
       <div className="input">
@@ -15,9 +15,9 @@ function App() {
       <br></br>
 
       <div className="radio1">
-        <input type="radio" name="monatlich" value="monatlich" />
+        <input type="radio" name="timeRadio" value="monatlich" />
         <label>Monatlich zahlen</label>
-        <input type="radio" name="jährlich" value="jährlich" />
+        <input type="radio" name="timeRadio" value="jährlich" />
         <label>Jährlich zahlen</label>
       </div>
 
@@ -32,7 +32,7 @@ function App() {
 
       <div className="monatBezahlung">
         <div className="radio2">
-          <input type="radio" name="bezAnfMonat" value="bezAnfMonat" />
+          <input type="radio" name="bezEndMonat" value="bezAnfMonat" />
           <label>Bez. Annfang Monat</label>
         </div>
 
@@ -61,7 +61,7 @@ function App() {
       <div className="radio4">
         <input type="radio" name="bezAnfJahr" value="bezAnfJahr" />
         <label>Bez. Anfang jahr</label>
-        <input type="radio" name="bezEndJahr" value="bezEndJahr" />
+        <input type="radio" name="bezAnfJahr" value="bezEndJahr" />
         <label>Bez. Ende Jahr</label>
       </div>
 
@@ -70,17 +70,22 @@ function App() {
       </div>
 
       <div className="berechnenButton">
-        <button onClick={(event)=>{        
-          const inputs = document.querySelectorAll('input')
-          //const kapital = inputs[0].value;
-          const sparbetrag = inputs[3].value;
-          const anzMonate = inputs[6].value;
-          //const sparbetragJahr = inputs[7].value;
-          const textoutput = document.getElementById('output');
-          const rueckgabe = "Sie hätten "+ sparbetrag * anzMonate+ " mit uns Gespart!"
-          textoutput.textContent=(rueckgabe);
-        }}
-        name="berechnen">Berechnen</button>
+        <button
+          onClick={(event) => {
+            const inputs = document.querySelectorAll("input");
+            //const kapital = inputs[0].value;
+            const sparbetrag = inputs[3].value;
+            const anzMonate = inputs[6].value;
+            //const sparbetragJahr = inputs[7].value;
+            const textoutput = document.getElementById("output");
+            const rueckgabe =
+              "Sie hätten " + sparbetrag * anzMonate + " mit uns Gespart!";
+            textoutput.textContent = rueckgabe;
+          }}
+          name="berechnen"
+        >
+          Berechnen
+        </button>
       </div>
     </div>
   );
