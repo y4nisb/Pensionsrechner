@@ -6,69 +6,54 @@ function App() {
       <div className="titel">
         <h1>Pensionsrechner</h1>
       </div>
-
       <div className="input">
         <label> Geben Sie ihr aktuelles Kapital an</label>
         <input type="number" />
       </div>
-
       <br></br>
-
       <div className="radio1">
         <input type="radio" name="timeRadio" value="monatlich" />
         <label>Monatlich zahlen</label>
         <input type="radio" name="timeRadio" value="jährlich" />
         <label>Jährlich zahlen</label>
       </div>
-
       <br></br>
-
       <div className="input">
         <label> Wie viel möchten Sie monatlich sparen? </label>
         <input type="number" />
       </div>
-
       <br></br>
-
       <div className="monatBezahlung">
         <div className="radio2">
           <input type="radio" name="bezEndMonat" value="bezAnfMonat" />
-          <label>Bez. Annfang Monat</label>
+          <label>Bezahlung Anfang Monat</label>
         </div>
 
         <div className="radio3">
           <input type="radio" name="bezEndMonat" value="bezEndMonat" />
-          <label>Bez. Ende Monat</label>
+          <label>Bezahlung Ende Monat</label>
         </div>
       </div>
-
       <br></br>
-
       <div className="input">
         <label> Wie viele Monate wollen sie sparen? </label>
         <input type="number" />
       </div>
-
       <br></br>
-
       <div className="input">
         <label> Wie viel möchten Sie im Jahr sparen? </label>
         <input type="number" />
       </div>
-
       <br></br>
-
       <div className="radio4">
         <input type="radio" name="bezAnfJahr" value="bezAnfJahr" />
-        <label>Bez. Anfang jahr</label>
+        <label>Einlage Anfang Jahr</label>
         <input type="radio" name="bezAnfJahr" value="bezEndJahr" />
-        <label>Bez. Ende Jahr</label>
+        <label>Einlage Ende Jahr</label>
       </div>
-
       <div className="outputAusrechnen">
         <p id="output"></p>
       </div>
-
       <div className="berechnenButton">
         <button
           onClick={(event) => {
@@ -86,6 +71,10 @@ function App() {
         >
           Berechnen
         </button>
+      </div>
+
+      <div className="reset">
+        <button onClick={() => window.location.reload(false)}>reset</button>
       </div>
     </div>
   );

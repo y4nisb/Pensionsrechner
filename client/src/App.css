@@ -1,4 +1,4 @@
-html{
+html {
   margin-top: 10px;
 }
 
@@ -17,7 +17,8 @@ html{
   justify-content: center;
 }
 
-.input input, .berechnenButton button{
+.input input,
+.berechnenButton button {
   background-color: rgb(175, 172, 172);
   padding: 0;
   border: 0;
@@ -27,12 +28,27 @@ html{
 }
 
 body {
-  background: linear-gradient(to right, #5886FA, #9BA7E0, #A7AEF5);
+  background: linear-gradient(to right, #5886fa, #9ba7e0, #a7aef5);
 }
 
-.berechnenButton button{
+.berechnenButton button {
   width: 300px;
   height: 50px;
   font-size: 120%;
 }
-
+.reset {
+  width: 300px;
+  height: 50px;
+  font-size: 120%;
+  justify-content: center;
+  text-align: center;
+}
+.reset button {
+  background-color: rgb(175, 172, 172);
+  padding: 0;
+  border: 0;
+  width: 120px;
+  height: 24px;
+  margin-left: 5px;
+  justify-content: center;
+}
