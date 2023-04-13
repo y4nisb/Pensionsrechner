@@ -73,7 +73,7 @@ function App() {
         </button>
       </div>
 
-      <div className="reset">
+      <div className="Löschen">
         <button onClick={() => window.location.reload(false)}>reset</button>
       </div>
     </div>
