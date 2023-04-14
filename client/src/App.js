@@ -69,7 +69,7 @@ function App() {
             //const sparbetragJahr = inputs[7].valueAsNumber;
             const zinsbetrag = inputs[8].valueAsNumber;
             const textoutput = document.getElementById("output");
-
+            
             const jahre_zu_sparen = (anzMonate - (anzMonate % 12))/12
             const monate_ungespart = (anzMonate % 12)
             let zinsaddiert = 0;
@@ -82,7 +82,7 @@ function App() {
               let Zinsgeld = (sparbetrag * (jahre * 12)) + kapital + zinsaddiert
               zinseinkommen = Zinsgeld * (zinsbetrag /100)
               zinsaddiert = zinseinkommen
-              console.log(zinseinkommen,zinsaddiert)
+            //console.log(zinseinkommen,zinsaddiert)
             }
 
             const rueckgabe = + (sparbetrag * anzMonate) + zinseinkommen //alle einzahlungen + der zins auf dem Geld
@@ -97,7 +97,21 @@ function App() {
         </button>
       </div>
       <div className="reset">
-        <button onClick={() => window.location.reload(false)}>reset</button>
+        <button onClick={() => {
+            const inputs = document.querySelectorAll("input");
+            const kapital = inputs[0];
+            const sparbetrag = inputs[3];
+            const anzMonate = inputs[6];
+            const zinsbetrag = inputs[8];
+            const textoutput = document.getElementById("output");   
+                     
+            inputs.value="";
+            kapital.value="";
+            sparbetrag.value="";
+            anzMonate.value="";
+            zinsbetrag.value="";
+            textoutput.textContent ="";
+        }}>Zurücksetzten</button>
       </div>
     </div>
   );
