@@ -78,14 +78,14 @@ function App() {
 
             //console.log(kapital, jahre_zu_sparen * (sparbetrag * 12), monate_ungespart * sparbetrag, sparbetrag, zinsbetrag / 100)
 
-            for (let jahre = 0; jahre <= jahre_zu_sparen; jahre++) {
+            for (let jahre = 0; jahre < jahre_zu_sparen; jahre++) {
               let Zinsgeld = (sparbetrag * (jahre * 12)) + kapital + zinsaddiert
               zinseinkommen = Zinsgeld * (zinsbetrag /100)
               zinsaddiert = zinseinkommen
               console.log(zinseinkommen,zinsaddiert)
             }
-
-            const rueckgabe = + (sparbetrag * anzMonate) + zinseinkommen 
+          
+            const rueckgabe = (sparbetrag * anzMonate) + zinseinkommen 
 
             //rueckgabe = "so viel haben Sie mit uns gespart! "  + Josuha  //das eingezahlte über zeit + der Zins
             textoutput.textContent = "so viel haben Sie mit uns gespart! " +rueckgabe;
