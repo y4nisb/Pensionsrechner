@@ -48,7 +48,7 @@ function App() {
       <div className="inputTextfield">
         <label> Geben Sie den Zins in Prozent an </label>
         <input type="number" />
-      </div>
+      </div>      
       <br></br>
       <div className="radio4">
         <input type="radio" name="bezAnfJahr" value="bezAnfJahr" />
@@ -70,35 +70,34 @@ function App() {
             const zinsbetrag = inputs[8].valueAsNumber;
             const textoutput = document.getElementById("output");
 
-            const jahre_zu_sparen = (anzMonate - (anzMonate % 12)) / 12;
-            const monate_ungespart = anzMonate % 12;
+            const jahre_zu_sparen = (anzMonate - (anzMonate % 12))/12
+            const monate_ungespart = (anzMonate % 12)
             let zinsaddiert = 0;
             let zinseinkommen = 0;
+            
 
             //console.log(kapital, jahre_zu_sparen * (sparbetrag * 12), monate_ungespart * sparbetrag, sparbetrag, zinsbetrag / 100)
 
             for (let jahre = 0; jahre <= jahre_zu_sparen; jahre++) {
-              let Zinsgeld = sparbetrag * (jahre * 12) + kapital + zinsaddiert;
-              zinseinkommen = Zinsgeld * (zinsbetrag / 100);
-              zinsaddiert = zinseinkommen;
-              console.log(zinseinkommen, zinsaddiert);
+              let Zinsgeld = (sparbetrag * (jahre * 12)) + kapital + zinsaddiert
+              zinseinkommen = Zinsgeld * (zinsbetrag /100)
+              zinsaddiert = zinseinkommen
+              console.log(zinseinkommen,zinsaddiert)
             }
 
-            const rueckgabe = +(sparbetrag * anzMonate) + zinseinkommen;
+            const rueckgabe = + (sparbetrag * anzMonate) + zinseinkommen //alle einzahlungen + der zins auf dem Geld
+            //sparbetrag * anzMonate + zinseinkommen + Kapital => das währe mit dem Kaptital
 
-            textoutput.textContent =
-              "so viel haben Sie mit uns gespart! " + rueckgabe;
+
+            textoutput.textContent = "so viel haben Sie mit uns gespart! " +rueckgabe;
           }}
           name="berechnen"
         >
           Berechnen
         </button>
       </div>
-
       <div className="reset">
-        <button onClick={() => window.location.reload(false)}>
-          Zurücksetzen
-        </button>
+        <button onClick={() => window.location.reload(false)}>reset</button>
       </div>
     </div>
   );
