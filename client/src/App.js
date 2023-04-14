@@ -12,7 +12,7 @@ function App() {
       </div>
       <br></br>
       <div className="radio1">
-        <input type="radio" name="timeRadio" value="monatlich" />
+        <input type="radio" name="timeRadio" value="monatlich" checked />
         <label>Monatlich zahlen</label>
         <input type="radio" name="timeRadio" value="jährlich" />
         <label>Jährlich zahlen</label>
@@ -25,7 +25,7 @@ function App() {
       <br></br>
       <div className="monatBezahlung">
         <div className="radio2">
-          <input type="radio" name="bezEndMonat" value="bezAnfMonat" />
+          <input type="radio" name="bezEndMonat" value="bezAnfMonat" checked/>
           <label>Bezahlung Anfang Monat</label>
         </div>
 
@@ -36,7 +36,7 @@ function App() {
       </div>
       <br></br>
       <div className="inputTextfield">
-        <label> Wie viele Monate wollen sie sparen? </label>
+        <label> Wie viele Monate wollen sie sparen?</label>
         <input type="number" />
       </div>
       <br></br>
@@ -51,7 +51,7 @@ function App() {
       </div>      
       <br></br>
       <div className="radio4">
-        <input type="radio" name="bezAnfJahr" value="bezAnfJahr" />
+        <input type="radio" name="bezAnfJahr" value="bezAnfJahr" checked/>
         <label>Einlage Anfang Jahr</label>
         <input type="radio" name="bezAnfJahr" value="bezEndJahr" />
         <label>Einlage Ende Jahr</label>
