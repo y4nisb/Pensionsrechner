@@ -17,7 +17,7 @@ html {
   justify-content: center;
 }
 
-.input input,
+.inputTextfield input,
 .berechnenButton button,
 .reset button {
   background-color: rgb(175, 172, 172);
