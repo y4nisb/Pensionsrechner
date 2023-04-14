@@ -87,7 +87,7 @@ function App() {
 
             const rueckgabe = + (sparbetrag * anzMonate) + zinseinkommen 
 
-            //rueckgabe = "so viel haben Sie mit uns gespart! "  + Josuha  //das eingezahlte über zeit + der Zins
+            
             textoutput.textContent = "so viel haben Sie mit uns gespart! " +rueckgabe;
           }}
           name="berechnen"

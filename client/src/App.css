@@ -17,6 +17,11 @@ html {
   justify-content: center;
 }
 
+.inputTextfield input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .inputTextfield input,
 .berechnenButton button,
 .reset button {
