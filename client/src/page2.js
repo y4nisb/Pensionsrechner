@@ -1,10 +1,10 @@
 import "./App.css";
 
-function App() {
+function App2() {
   return (
     <div className="App">
       <div className="titel">
-        <h1>Pensionsrechner</h1>
+        <h1>Pensionsrechner.v2</h1>
       </div>
       <div className="inputTextfield">
         <label> Geben Sie ihr aktuelles Kapital an</label>
@@ -103,4 +103,4 @@ function App() {
   );
 }
 
-export default App;
+export default App2;
