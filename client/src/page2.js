@@ -2,64 +2,64 @@ import "./App.css";
 
 function App2() {
   return (
-    <div className="App">
-      <div className="titel">
+    <div className="App2">
+      <div className="titel2">
         <h1>Pensionsrechner.v2</h1>
       </div>
-      <div className="inputTextfield">
+      <div className="inputTextfield2">
         <label> Geben Sie ihr aktuelles Kapital an</label>
         <input type="number" />
       </div>
       <br></br>
-      <div className="radio1">
+      <div className="radio12">
         <input type="radio" name="timeRadio" value="monatlich" />
         <label>Monatlich zahlen</label>
         <input type="radio" name="timeRadio" value="jährlich" />
         <label>Jährlich zahlen</label>
       </div>
       <br></br>
-      <div className="inputTextfield">
+      <div className="inputTextfield2">
         <label> Wie viel möchten Sie monatlich sparen? </label>
         <input type="number" />
       </div>
       <br></br>
-      <div className="monatBezahlung">
-        <div className="radio2">
+      <div className="monatBezahlung2">
+        <div className="radio22">
           <input type="radio" name="bezEndMonat" value="bezAnfMonat" />
           <label>Bezahlung Anfang Monat</label>
         </div>
 
-        <div className="radio3">
+        <div className="radio32">
           <input type="radio" name="bezEndMonat" value="bezEndMonat" />
           <label>Bezahlung Ende Monat</label>
         </div>
       </div>
       <br></br>
-      <div className="inputTextfield">
+      <div className="inputTextfield2">
         <label> Wie viele Monate wollen sie sparen? </label>
         <input type="number" />
       </div>
       <br></br>
-      <div className="inputTextfield">
+      <div className="inputTextfield2">
         <label> Wie viel möchten Sie im Jahr sparen? </label>
         <input type="number" />
       </div>
       <br></br>
-      <div className="inputTextfield">
+      <div className="inputTextfield2">
         <label> Geben Sie den Zins in Prozent an </label>
         <input type="number" />
       </div>
       <br></br>
-      <div className="radio4">
+      <div className="radio42">
         <input type="radio" name="bezAnfJahr" value="bezAnfJahr" />
         <label>Einlage Anfang Jahr</label>
         <input type="radio" name="bezAnfJahr" value="bezEndJahr" />
         <label>Einlage Ende Jahr</label>
       </div>
-      <div className="outputAusrechnen">
+      <div className="outputAusrechnen2">
         <p id="output"></p>
       </div>
-      <div className="berechnenButton">
+      <div className="berechnenButton2">
         <button
           onClick={(event) => {
             const inputs = document.querySelectorAll("input");
@@ -96,7 +96,7 @@ function App2() {
         </button>
       </div>
 
-      <div className="reset">
+      <div className="reset2">
         <button onClick={() => window.location.reload(false)}>reset</button>
       </div>
     </div>
