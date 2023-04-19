@@ -52,3 +52,11 @@ body {
   margin-left: 5px;
   cursor: pointer;
 }
+
+.invisible{
+  display: none;
+  padding: 0;
+  border: 0;
+  width: 0px;
+  height: 0px;
+}

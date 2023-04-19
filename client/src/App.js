@@ -11,49 +11,63 @@ function App() {
         <input type="number" />
       </div>
       <br></br>
-      <div className="radio1">
-        <input type="radio" name="timeRadio" value="monatlich" checked />
+      <div className="radio">
+        <input type="radio" name="timeRadio" value="monatlich" checked onClick={(event) => {
+        const monatlichBetrag = document.getElementById("MonatlichSparen");
+        const jaerhlichBetrag = document.getElementById("JaehrlichSparen");
+          
+        jaerhlichBetrag.classList.add("invisible");
+        monatlichBetrag.classList.remove("invisible");
+      }}/>
         <label>Monatlich zahlen</label>
-        <input type="radio" name="timeRadio" value="jährlich" />
+
+        <input type="radio" name="timeRadio" value="jährlich"  onClick={(event) => {
+          const monatlichBetrag = document.getElementById("MonatlichSparen");
+          const jaerhlichBetrag = document.getElementById("JaehrlichSparen");
+          
+          jaerhlichBetrag.classList.remove("invisible");
+          monatlichBetrag.classList.add("invisible");
+      }}/>
         <label>Jährlich zahlen</label>
+
       </div>
       <br></br>
-      <div className="inputTextfield">
+      <div className="inputTextfield " id="MonatlichSparen">
         <label> Wie viel möchten Sie monatlich sparen? </label>
-        <input type="number" />
+        <input type="number" /> 
       </div>
       <br></br>
       <div className="monatBezahlung">
-        <div className="radio2">
+        <div className="radio">
           <input type="radio" name="bezEndMonat" value="bezAnfMonat" checked/>
           <label>Bezahlung Anfang Monat</label>
         </div>
 
-        <div className="radio3">
-          <input type="radio" name="bezEndMonat" value="bezEndMonat" />
+        <div className="radio">
+          <input type="radio" name="bezEndMonat" value="bezEndMonat"  />
           <label>Bezahlung Ende Monat</label>
         </div>
       </div>
       <br></br>
-      <div className="inputTextfield">
+      <div className="inputTextfield" id="AnzahlMonate">
         <label> Wie viele Monate wollen sie sparen?</label>
         <input type="number" />
       </div>
       <br></br>
-      <div className="inputTextfield">
+      <div className="inputTextfield invisible" id="JaehrlichSparen">
         <label> Wie viel möchten Sie im Jahr sparen? </label>
         <input type="number" />
       </div>
       <br></br>
-      <div className="inputTextfield">
+      <div className="inputTextfield" id="ZinsProzent">
         <label> Geben Sie den Zins in Prozent an </label>
         <input type="number" />
       </div>      
       <br></br>
-      <div className="radio4">
-        <input type="radio" name="bezAnfJahr" value="bezAnfJahr" checked/>
+      <div className="radio">
+        <input type="radio" name="bezAnfJahr" value="bezAnfJahr"  checked/>
         <label>Einlage Anfang Jahr</label>
-        <input type="radio" name="bezAnfJahr" value="bezEndJahr" />
+        <input type="radio" name="bezAnfJahr" value="bezEndJahr"  />
         <label>Einlage Ende Jahr</label>
       </div>
       <div className="outputAusrechnen">
@@ -66,12 +80,9 @@ function App() {
             const kapital = inputs[0].valueAsNumber;
             const sparbetrag = inputs[3].valueAsNumber;
             const anzMonate = inputs[6].valueAsNumber;
-            //const sparbetragJahr = inputs[7].valueAsNumber;
             const zinsbetrag = inputs[8].valueAsNumber;
             const textoutput = document.getElementById("output");
-            
             const jahre_zu_sparen = (anzMonate - (anzMonate % 12))/12
-            const monate_ungespart = (anzMonate % 12)
             let zinsaddiert = 0;
             let zinseinkommen = 0;
             
@@ -89,7 +100,7 @@ function App() {
             //sparbetrag * anzMonate + zinseinkommen + Kapital => das währe mit dem Kaptital
 
 
-            textoutput.textContent = "so viel haben Sie mit uns gespart! " +rueckgabe;
+            textoutput.textContent = "so viel haben Sie mit uns gespart! " + rueckgabe;
           }}
           name="berechnen"
         >
