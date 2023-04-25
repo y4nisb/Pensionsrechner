@@ -13,30 +13,36 @@ function PAGE2() {
           <input
             type="radio"
             name="zinsRadio"
-            value="monatlich"
             id="monatlich"
           />
           <label>Monatlich sparen</label>
-          <input type="radio" name="zinsRadio" value="jährlich" id="jährlich" />
+          <input type="radio" name="zinsRadio" id="jährlich" checked />
           <label>Jährlich sparen</label>
         </div>
-        <br></br>
-        <label>In ... Monaten und ... Jahren sind Sie fertig mit sparen.</label>
       </div>
       <br></br>
       <div className="inputTextfield">
         <label>Bis wann möchten Sie sparen: </label>
         <input type="text" id="endpoint" />
       </div>
+    <p id="endpunkt">In ... Monaten und ... Jahren sind Sie fertig mit sparen.</p>
+
       <div className="berechnenButton">
         <button
           id="berechenenButton"
           onClick={(event) => {
-            const jährlichZahlen = document.getElementById("jährlich");
-            const monatlichZahlen = document.getElementById("monatlich");
+            const jaehrlichZahlen = document.getElementById("jährlich").checked;
+            const monatlichZahlen = document.getElementById("monatlich").checked;
             const result = document.getElementById("endkapital");
             const now = Date;
             const endpoint = document.getElementById("endpoint");
+
+            console.log(endpoint)
+            if(jaehrlichZahlen==true){
+              endpoint.textContent="In ??? Monaten und ??? Jahren sind Sie fertig mit sparen."
+            }else{
+              endpoint.textContent="In ___ Monaten und ___ Jahren sind Sie fertig mit sparen."
+            }
           }}
         >
           Brechenen
