@@ -26,6 +26,7 @@ html {
   width: 120px;
   height: 24px;
   margin-left: 5px;
+  cursor: pointer;
 }
 
 body {
