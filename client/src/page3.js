@@ -1,7 +1,7 @@
 function PAGE2() {
   return (
     <>
-      <h1>Sparrechner</h1>
+      <h1>Sparplaner</h1>
       <div>
         <div className="inputTextfield">
           <label>Wie viel wollen Sie insgesamt sparen: </label>
@@ -21,6 +21,11 @@ function PAGE2() {
         <label>Bis wann möchten Sie sparen: </label>
         <input type="text" id="endpoint" />
       </div>
+      <br></br>
+      <div className="inputTextfield">
+        <label>Geben Sie den Zins an: </label>
+        <input type="text" id="zins" />
+      </div>
       <p id="endpunkt">
         In ... Monaten und ... Jahren sind Sie fertig mit sparen.
       </p>
@@ -32,8 +37,9 @@ function PAGE2() {
             const jaehrlichZahlen = document.getElementById("jährlich").checked;
             const monatlichZahlen =
               document.getElementById("monatlich").checked;
-            const result = document.getElementById("endkapital");
-            const now = Date;
+            const ziel = document.getElementById("endkapital");
+            const now = Date();
+            const zins = document.getElementById("zins");
             const endpoint = document.getElementById("endpoint");
 
             console.log(endpoint);
