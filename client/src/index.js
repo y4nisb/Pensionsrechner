@@ -4,11 +4,12 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import page2 from "./page2";
 import App2 from "./page2";
+import PAGE3 from "./page3";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App2 />
+    <PAGE3 />
   </React.StrictMode>
 );
 
