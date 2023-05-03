@@ -1,4 +1,4 @@
-function PAGE2() {
+function PAGE3() {
     return (
       <>
         <h1>Sparplaner</h1>
@@ -11,16 +11,16 @@ function PAGE2() {
           <div>
             <label>Wollen Sie monatlich oder jährlich sparen: </label>
             <input type="radio" name="zinsRadio" id="monatlich" defaultChecked  onClick={(event) => {
-          const monatlichBetrag = document.getElementById("MonatlichSparen");
-          const jaerhlichBetrag = document.getElementById("JaehrlichSparen");
+          const monatlichBetrag = document.getElementById("monatlich");
+          const jaerhlichBetrag = document.getElementById("jaehrlich");
           
           jaerhlichBetrag.classList.remove("invisible");
           monatlichBetrag.classList.add("invisible");
       }}/>
             <label>Monatlich sparen</label>
-            <input type="radio" name="zinsRadio" id="jährlich" checked onClick={(event) => {
-          const monatlichBetrag = document.getElementById("MonatlichSparen");
-          const jaerhlichBetrag = document.getElementById("JaehrlichSparen");
+            <input type="radio" name="zinsRadio" id="jaehrlich" checked onClick={(event) => {
+          const monatlichBetrag = document.getElementById("monatlich");
+          const jaerhlichBetrag = document.getElementById("jaehrlich");
           
           jaerhlichBetrag.classList.remove("invisible");
           monatlichBetrag.classList.add("invisible");
@@ -71,4 +71,3 @@ function PAGE2() {
     );
   }
   export default PAGE3;
-  
