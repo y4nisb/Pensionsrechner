@@ -1,5 +1,5 @@
 function PAGE3() {
-  let timecounter = 0; 
+  let timecounter = 0; //die zeit bis wann gespart wird in monaten
     return (
       <>
         <h1>Sparplaner</h1>
@@ -26,6 +26,7 @@ function PAGE3() {
         <br></br>
         <div className="inputTextfield">
           <label>Bis wann möchten Sie sparen: </label>
+          <input type="text" id="zeit" />
         </div>
         <br></br>
         <div className="inputTextfield">
@@ -43,10 +44,10 @@ function PAGE3() {
             onClick={(event) => {
               const jaehrlichZahlen = document.getElementById("jährlich").checked;
               const ziel = document.getElementById("endkapital");
-              const now = Date();
+              const zeit = document.getElementById("zeit")
               const zins = document.getElementById("zins");
+              const now = Date();
               const endpoint = document.getElementById("endpoint");
-  
               console.log(endpoint);
               if (jaehrlichZahlen == true) {
                 endpoint.textContent =
