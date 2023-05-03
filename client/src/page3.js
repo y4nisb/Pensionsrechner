@@ -1,4 +1,5 @@
 function PAGE3() {
+  let timecounter = 0; 
     return (
       <>
         <h1>Sparplaner</h1>
@@ -10,45 +11,37 @@ function PAGE3() {
           <br></br>
           <div>
             <label>Wollen Sie monatlich oder jährlich sparen: </label>
-            <input type="radio" name="zinsRadio" id="monatlich" defaultChecked  onClick={(event) => {
-          const monatlichBetrag = document.getElementById("monatlich");
-          const jaerhlichBetrag = document.getElementById("jaehrlich");
-          
-          jaerhlichBetrag.classList.remove("invisible");
-          monatlichBetrag.classList.add("invisible");
-      }}/>
+            <input type="radio" name="zinsRadio" id="monatlich" defaultChecked onClick={(event) => {
+              const endpoint = document.getElementById("endpoint");
+              endpoint.textContent="In "+ timecounter +" Monaten sind Sie fertig mit sparen."
+            }}/>
             <label>Monatlich sparen</label>
-            <input type="radio" name="zinsRadio" id="jaehrlich" checked onClick={(event) => {
-          const monatlichBetrag = document.getElementById("monatlich");
-          const jaerhlichBetrag = document.getElementById("jaehrlich");
-          
-          jaerhlichBetrag.classList.remove("invisible");
-          monatlichBetrag.classList.add("invisible");
-      }}/>
+            <input type="radio" name="zinsRadio" id="jaehrlich" onClick={(event) => {
+              const endpoint = document.getElementById("endpoint");
+              endpoint.textContent="In "+ (timecounter / 12) +" Jahren sind Sie fertig mit sparen."
+            }}/>
             <label>Jährlich sparen</label>
           </div>
         </div>
         <br></br>
         <div className="inputTextfield">
           <label>Bis wann möchten Sie sparen: </label>
-          <input type="text" id="endpoint" />
         </div>
         <br></br>
         <div className="inputTextfield">
           <label>Geben Sie den Zins an: </label>
           <input type="text" id="zins" />
         </div>
-        <p id="endpunkt">
-          In ... Monaten und ... Jahren sind Sie fertig mit sparen.
-        </p>
+        <br></br>
+        <label id="endpoint">
+            In 0 Monaten sind Sie fertig mit sparen.
+        </label>
   
         <div className="berechnenButton">
           <button
             id="berechenenButton"
             onClick={(event) => {
               const jaehrlichZahlen = document.getElementById("jährlich").checked;
-              const monatlichZahlen =
-                document.getElementById("monatlich").checked;
               const ziel = document.getElementById("endkapital");
               const now = Date();
               const zins = document.getElementById("zins");
@@ -57,10 +50,10 @@ function PAGE3() {
               console.log(endpoint);
               if (jaehrlichZahlen == true) {
                 endpoint.textContent =
-                  "In ??? Monaten und ??? Jahren sind Sie fertig mit sparen.";
+                  "In "+ timecounter +" Monaten sind Sie fertig mit sparen."
               } else {
                 endpoint.textContent =
-                  "In ___ Monaten und ___ Jahren sind Sie fertig mit sparen.";
+                  "In "+ (timecounter / 12) +" Jahren sind Sie fertig mit sparen."
               }
             }}
           >
