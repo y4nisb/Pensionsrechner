@@ -25,8 +25,11 @@ function PAGE3() {
         </div>
         <br></br>
         <div className="inputTextfield">
-          <label>Bis wann möchten Sie sparen: </label>
-          <input type="text" id="zeit" />
+
+          <label>Datum bis wann gespart wird Monat als zahl:</label>
+          <input type="text" id="endMonth" />
+          <label>Jahr als 4 stellige zahl:</label>
+          <input type="text" id="endYear" />         
         </div>
         <br></br>
         <div className="inputTextfield">
@@ -42,13 +45,15 @@ function PAGE3() {
           <button
             id="berechenenButton"
             onClick={(event) => {
-              const jaehrlichZahlen = document.getElementById("jährlich").checked;
+              const jaehrlichZahlen = document.getElementById("jährlich");
               const ziel = document.getElementById("endkapital");
-              const zeit = document.getElementById("zeit")
+              const now = new Date(); // creates a new Date object with the current date and time
+              const year = now.getFullYear(); // gets the year (4 digits)
+              const month = now.getMonth() + 1; // gets the month (0-11) and adds 1 to make it 1-12
               const zins = document.getElementById("zins");
-              const now = Date();
               const endpoint = document.getElementById("endpoint");
-              console.log(endpoint);
+  
+              console.log(now,year,month);
               if (jaehrlichZahlen == true) {
                 endpoint.textContent =
                   "In "+ timecounter +" Monaten sind Sie fertig mit sparen."
