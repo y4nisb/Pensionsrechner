@@ -1,9 +1,10 @@
-import "./App.css";
+import "./pensionsrechner.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App2() {
   return (
     <div className="App2">
-      <div className="titel2">
+      <div className="container">
         <h1>Pensionsrechner.v2</h1>
       </div>
       <div className="inputTextfield2">

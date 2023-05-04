@@ -1,4 +1,4 @@
-import "./App.css";
+import "./pensionsrechner.css";
 
 function App() {
   return (
