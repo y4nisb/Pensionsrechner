@@ -1,15 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
+import App from "./App.js";
 import reportWebVitals from "./reportWebVitals";
-import page2 from "./page2";
-import App2 from "./page2";
-import PAGE3 from "./page3";
+import PAGE1 from "./page1.js";
+import PAGE2 from "./page2.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <PAGE3 />
+    <PAGE2 />
   </React.StrictMode>
 );
 
