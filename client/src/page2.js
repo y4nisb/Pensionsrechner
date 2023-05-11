@@ -3,19 +3,20 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function PAGE2() {
   return (
-    <div>
+    <div className="gugus">
       <div class="container">
         <div class="row">
-          <div class="text-center">
-            <h1>Planer</h1>
+          <div class="col-6 mx-auto">
+            <div class="text-center">
+              <h1>Planer</h1>
+            </div>
           </div>
         </div>
 
         <br></br>
 
         <div class="row">
-          <div class="col-2"></div>
-          <div class="col-10">
+          <div class="col-8">
             <div>
               <label>Gewünschtes Endkapital</label>
               <br></br>
@@ -25,12 +26,14 @@ function PAGE2() {
             <br></br>
 
             <div class="row">
-              <div class="col-2">
+              <div class="col-4"></div>
+
+              <div class="col-3">
                 <input type="radio" name="zinsRadio" id="monatlich" />
                 <label>Monatliche Einlage</label>
               </div>
 
-              <div class="col-10">
+              <div class="col-4">
                 <input type="radio" name="zinsRadio" id="jährlich" checked />
                 <label>Jährliche Einlage</label>
               </div>
@@ -52,18 +55,19 @@ function PAGE2() {
               <input type="text" id="zins" />
             </div>
 
+            <br></br>
+
             <div class="row">
-              <div class="col-5"></div>
-              <div class="col-7">
+              <div class="col-9"></div>
+              <div class="col-3">
                 <div className="outputBox">
                   <p id="output">
-                    In ... Monaten und ... Jahren sind Sie fertig mit sparen.
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="berechnenButton">
+            <div className="calculateButton">
               <button
                 id="berechenenButton"
                 onClick={(event) => {

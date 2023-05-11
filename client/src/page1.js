@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function PAGE1() {
   return (
-    <div>
+    <div className="gugus">
       <div class="container">
         <div class="row">
           <div class="col-6 mx-auto">
@@ -18,9 +18,8 @@ function PAGE1() {
         </div>
 
         <div class="row">
-          <div class="col-3"></div>
-          <div class="col-4">
-            <div class="linke-binke">
+          <div class="col-7">
+            <div className="linke-binke">
               <br></br>
 
               <div>
@@ -60,7 +59,7 @@ function PAGE1() {
             </div>
           </div>
           <div class="col-3">
-            <div class="rechte-mechte">
+            <div className="rechte-mechte">
               <br></br>
 
               <div>
@@ -110,6 +109,7 @@ function PAGE1() {
               </div>
 
               <br></br>
+              <br></br>
 
               <div className="calculateButton">
                 <button
@@ -148,8 +148,6 @@ function PAGE1() {
                   Berechnen
                 </button>
               </div>
-
-              <br></br>
 
               <div class="row">
                 <div class="col-8"></div>
