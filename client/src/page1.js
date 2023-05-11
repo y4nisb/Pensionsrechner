@@ -1,4 +1,4 @@
-import "./sparrechner.css";
+import "./pages.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function PAGE1() {
@@ -6,22 +6,22 @@ function PAGE1() {
     <div>
       <div class="container">
         <div class="row">
-          <div class="col-sm-6 col-md-6 col-lg-6 mx-auto">
+          <div class="col-6 mx-auto">
             <div class="text-center">
               <h1>Sparrechner</h1>
               <br></br>
-              <label> Startkapital</label>
+              <label>Startkapital</label>
               <br></br>
               <input type="text" />
             </div>
           </div>
         </div>
 
-
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-3"></div>
+          <div class="col-4">
             <div class="linke-binke">
-            <br></br>
+              <br></br>
 
               <div>
                 <input type="radio" name="timeRadio" value="monatlich" />
@@ -59,10 +59,9 @@ function PAGE1() {
               </div>
             </div>
           </div>
-
-          <div class="col-md-6">
+          <div class="col-3">
             <div class="rechte-mechte">
-            <br></br>
+              <br></br>
 
               <div>
                 <input type="radio" name="timeRadio" value="jährlich" />
@@ -96,12 +95,13 @@ function PAGE1() {
               </div>
             </div>
           </div>
+          <div class="col-2"></div>
         </div>
 
         <br></br>
 
         <div class="row">
-          <div class="col-sm-6 col-md-6 col-lg-6 mx-auto">
+          <div class="col-6 mx-auto">
             <div class="text-center">
               <div>
                 <label>Zinssatz</label>
@@ -151,6 +151,13 @@ function PAGE1() {
 
               <br></br>
 
+              <div class="row">
+                <div class="col-8"></div>
+                <div class="col-4" className="outputLabel">
+                  <p id="output"></p>
+                </div>
+              </div>
+
               <div className="resetButton">
                 <button onClick={() => window.location.reload(false)}>
                   Zurücksetzen
@@ -158,11 +165,6 @@ function PAGE1() {
               </div>
             </div>
           </div>
-        </div>
-
-        <div className="outputLabel">
-          <label>Ergebnis</label>
-          <p id="output"></p>
         </div>
       </div>
     </div>

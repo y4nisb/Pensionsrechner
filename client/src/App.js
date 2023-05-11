@@ -1,4 +1,4 @@
-import "./sparrechner.css";
+import "./pages.css";
 
 function App() {
   return (
