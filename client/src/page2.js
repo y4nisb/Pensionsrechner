@@ -1,106 +1,111 @@
-import "./App.css";
+import "./pages.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-function App2() {
+function PAGE2() {
   return (
-    <div className="App2">
-      <div className="titel2">
-        <h1>Pensionsrechner.v2</h1>
-      </div>
-      <div className="inputTextfield2">
-        <label> Geben Sie ihr aktuelles Kapital an</label>
-        <input type="number" />
-      </div>
-      <br></br>
-      <div className="radio12">
-        <input type="radio" name="timeRadio" value="monatlich" />
-        <label>Monatlich zahlen</label>
-        <input type="radio" name="timeRadio" value="jährlich" />
-        <label>Jährlich zahlen</label>
-      </div>
-      <br></br>
-      <div className="inputTextfield2">
-        <label> Wie viel möchten Sie monatlich sparen? </label>
-        <input type="number" />
-      </div>
-      <br></br>
-      <div className="monatBezahlung2">
-        <div className="radio22">
-          <input type="radio" name="bezEndMonat" value="bezAnfMonat" />
-          <label>Bezahlung Anfang Monat</label>
+    <div className="gugus">
+      <div class="container">
+        <div class="row">
+          <div class="col-6 mx-auto">
+            <div class="text-center">
+              <h1>Planer</h1>
+            </div>
+          </div>
         </div>
 
-        <div className="radio32">
-          <input type="radio" name="bezEndMonat" value="bezEndMonat" />
-          <label>Bezahlung Ende Monat</label>
+        <br></br>
+
+        <div class="row">
+          <div class="col-8">
+            <div>
+              <label>Gewünschtes Endkapital</label>
+              <br></br>
+              <input type="text" id="endkapital" />
+            </div>
+
+            <br></br>
+
+            <div class="row">
+              <div class="col-4"></div>
+
+              <div class="col-3">
+                <input type="radio" name="zinsRadio" id="monatlich" />
+                <label>Monatliche Einlage</label>
+              </div>
+
+              <div class="col-4">
+                <input type="radio" name="zinsRadio" id="jährlich" checked />
+                <label>Jährliche Einlage</label>
+              </div>
+            </div>
+
+            <br></br>
+
+            <div>
+              <label>Zieldatum</label>
+              <br></br>
+              <input type="text" id="endpoint" />
+            </div>
+
+            <br></br>
+
+            <div>
+              <label>Zinssatz</label>
+              <br></br>
+              <input type="text" id="zins" />
+            </div>
+
+            <br></br>
+
+            <div class="row">
+              <div class="col-9"></div>
+              <div class="col-3">
+                <div className="outputBox">
+                  <p id="output">
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="calculateButton">
+              <button
+                id="berechenenButton"
+                onClick={(event) => {
+                  const jaehrlichZahlen =
+                    document.getElementById("jährlich").checked;
+                  const monatlichZahlen =
+                    document.getElementById("monatlich").checked;
+                  const ziel = document.getElementById("endkapital");
+                  const now = Date();
+                  const zins = document.getElementById("zins");
+                  const endpoint = document.getElementById("endpoint");
+
+                  console.log(endpoint);
+                  if (jaehrlichZahlen == true) {
+                    endpoint.textContent =
+                      "In ??? Monaten und ??? Jahren sind Sie fertig mit sparen.";
+                  } else {
+                    endpoint.textContent =
+                      "In ___ Monaten und ___ Jahren sind Sie fertig mit sparen.";
+                  }
+                }}
+              >
+                Berechnen
+              </button>
+            </div>
+
+            <br></br>
+
+            <div className="resetButton">
+              <button onClick={() => window.location.reload(false)}>
+                Zurücksetzen
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-      <br></br>
-      <div className="inputTextfield2">
-        <label> Wie viele Monate wollen sie sparen? </label>
-        <input type="number" />
-      </div>
-      <br></br>
-      <div className="inputTextfield2">
-        <label> Wie viel möchten Sie im Jahr sparen? </label>
-        <input type="number" />
-      </div>
-      <br></br>
-      <div className="inputTextfield2">
-        <label> Geben Sie den Zins in Prozent an </label>
-        <input type="number" />
-      </div>
-      <br></br>
-      <div className="radio42">
-        <input type="radio" name="bezAnfJahr" value="bezAnfJahr" />
-        <label>Einlage Anfang Jahr</label>
-        <input type="radio" name="bezAnfJahr" value="bezEndJahr" />
-        <label>Einlage Ende Jahr</label>
-      </div>
-      <div className="outputAusrechnen2">
-        <p id="output"></p>
-      </div>
-      <div className="berechnenButton2">
-        <button
-          onClick={(event) => {
-            const inputs = document.querySelectorAll("input");
-            const kapital = inputs[0].valueAsNumber;
-            const sparbetrag = inputs[3].valueAsNumber;
-            const anzMonate = inputs[6].valueAsNumber;
-            //const sparbetragJahr = inputs[7].valueAsNumber;
-            const zinsbetrag = inputs[8].valueAsNumber;
-            const textoutput = document.getElementById("output");
-
-            const jahre_zu_sparen = (anzMonate - (anzMonate % 12)) / 12;
-            const monate_ungespart = anzMonate % 12;
-            let zinsaddiert = 0;
-            let zinseinkommen = 0;
-
-            //console.log(kapital, jahre_zu_sparen * (sparbetrag * 12), monate_ungespart * sparbetrag, sparbetrag, zinsbetrag / 100)
-
-            for (let jahre = 0; jahre < jahre_zu_sparen; jahre++) {
-              let Zinsgeld = sparbetrag * (jahre * 12) + kapital + zinsaddiert;
-              zinseinkommen = Zinsgeld * (zinsbetrag / 100);
-              zinsaddiert = zinseinkommen;
-              console.log(zinseinkommen, zinsaddiert);
-            }
-
-            const rueckgabe = sparbetrag * anzMonate + zinseinkommen;
-
-            //rueckgabe = "so viel haben Sie mit uns gespart! "  + Josuha  //das eingezahlte über zeit + der Zins
-            textoutput.textContent =
-              "so viel haben Sie mit uns gespart! " + rueckgabe;
-          }}
-          name="berechnen"
-        >
-          Berechnen
-        </button>
-      </div>
-
-      <div className="reset2">
-        <button onClick={() => window.location.reload(false)}>reset</button>
       </div>
     </div>
   );
 }
 
-export default App2;
+export default PAGE2;
