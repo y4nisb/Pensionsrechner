@@ -67,6 +67,8 @@ function PAGE2() {
               </div>
             </div>
 
+            <br></br>
+
             <div className="calculateButton">
               <button
                 id="berechenenButton"
