@@ -4,21 +4,21 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function PAGE1() {
   return (
     <div className="gugus">
-      <div class="container">
-        <div class="row">
-          <div class="col-6 mx-auto">
-            <div class="text-center">
+      <div className="container">
+        <div className="row">
+          <div className="col-6 mx-auto">
+            <div className="text-center">
               <h1>Sparrechner</h1>
               <br></br>
               <label>Startkapital</label>
               <br></br>
-              <input type="text" />
+              <input type="text" id="startkapitalInput" />
             </div>
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-7">
+        <div className="row">
+          <div className="col-7">
             <div className="linke-binke">
               <br></br>
 
@@ -46,7 +46,7 @@ function PAGE1() {
                 <div>
                   <label>Monatliche Einlage</label>
                   <br></br>
-                  <input type="text" />
+                  <input type="text" id="monatlicheEinlageInput" />
                 </div>
 
                 <br></br>
@@ -76,12 +76,12 @@ function PAGE1() {
                 <div>
                   <label>Anzahl Monate</label>
                   <br></br>
-                  <input type="text" />
+                  <input type="text" id="anzahlMonateInput" />
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-3">
+          <div className="col-3">
             <div className="rechte-mechte">
               <br></br>
 
@@ -109,7 +109,7 @@ function PAGE1() {
                 <div>
                   <label>Jährliche Einlage</label>
                   <br></br>
-                  <input type="text" />
+                  <input type="text" id="jährlicheEinlageInput" />
                 </div>
 
                 <br></br>
@@ -127,23 +127,23 @@ function PAGE1() {
                 <div>
                   <label>Anzahl Jahre</label>
                   <br></br>
-                  <input type="text" />
+                  <input type="text" id="anzahlJahreInput" />
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-2"></div>
+          <div className="col-2"></div>
         </div>
 
         <br></br>
 
-        <div class="row">
-          <div class="col-6 mx-auto">
-            <div class="text-center">
+        <div className="row">
+          <div className="col-6 mx-auto">
+            <div className="text-center">
               <div>
                 <label>Zinssatz</label>
                 <br></br>
-                <input type="text" />
+                <input type="text" id="zinssatzInput" />
               </div>
 
               <br></br>
@@ -180,17 +180,21 @@ function PAGE1() {
                     let kapital = elStartkapital.value;
 
                     // Zuteilung Einlage Variable je nach Radio Button Auswahl
-                    // & Transparenz Effekt auf jeweilige nicht ausgewählte Optio
                     let sparbetrag = 0;
-                    if (selRadioB.value == "monatlich" && elMonatlicheEinlage) {
-                      sparbetrag = elMonatlicheEinlage.value;
-                      console.log("Sparbetrag: " + sparbetrag);
-                    } else if (
-                      selRadioB.value == "jährlich" &&
-                      elJährlicheEinlage
-                    ) {
-                      sparbetrag = elJährlicheEinlage.value;
-                      console.log("Sparbetrag: " + sparbetrag);
+                    if (selRadioB) {
+                      if (
+                        selRadioB.value == "monatlich" &&
+                        elMonatlicheEinlage
+                      ) {
+                        sparbetrag = elMonatlicheEinlage.value;
+                        console.log("Sparbetrag: " + sparbetrag);
+                      } else if (
+                        selRadioB.value == "jährlich" &&
+                        elJährlicheEinlage
+                      ) {
+                        sparbetrag = elJährlicheEinlage.value;
+                        console.log("Sparbetrag: " + sparbetrag);
+                      }
                     }
 
                     // Zuteilung Anzahl Monate Variable
@@ -198,10 +202,12 @@ function PAGE1() {
 
                     // Zuteilung Anzahl Jahre Variable
                     let jahre_zu_sparen = 0;
-                    if (selRadioB.value == "jährlich") {
-                      jahre_zu_sparen = elAnzahlJahre.value;
-                    } else if (selRadioB.value == "monatlich") {
-                      jahre_zu_sparen = (anzMonate - (anzMonate % 12)) / 12;
+                    if (selRadioB) {
+                      if (selRadioB.value == "jährlich") {
+                        jahre_zu_sparen = elAnzahlJahre.value;
+                      } else if (selRadioB.value == "monatlich") {
+                        jahre_zu_sparen = (anzMonate - (anzMonate % 12)) / 12;
+                      }
                     }
 
                     // Zuteilung Zinsbetrag Variable
@@ -225,8 +231,10 @@ function PAGE1() {
 
                     //rueckgabe = "so viel haben Sie mit uns gespart! "  + Josuha das eingezahlte über zeit + der Zins
                     let rueckgabe = sparbetrag * anzMonate + zinseinkommen;
-                    resultOutput.textContent =
+                    if (rueckgabe) {
+                      resultOutput.textContent =
                       "So viel haben Sie mit uns gespart: " + rueckgabe;
+                    }
                   }}
                   name="berechnen"
                 >
@@ -234,10 +242,12 @@ function PAGE1() {
                 </button>
               </div>
 
-              <div class="row">
-                <div class="col-8"></div>
-                <div class="col-4" className="outputLabel">
-                  <p id="output"></p>
+              <div className="row">
+                <div className="col-8"></div>
+                <div className="col-4">
+                  <div className="outputLabel">
+                    <p id="output"></p>
+                  </div>
                 </div>
               </div>
 
