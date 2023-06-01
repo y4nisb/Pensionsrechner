@@ -2,7 +2,7 @@ let Moneycounter = 0; //die zeit bis wann gespart wird in monaten
 function PAGE3() {
   return (
     <>
-      <div className="gugus">
+      <div className="page">
         <div className="container">
           <h1>Sparplaner</h1>
           <div className="inputTextfield">
@@ -20,7 +20,7 @@ function PAGE3() {
               id="monatlich"
               defaultChecked
               onClick={(event) => {
-                const endpoint = document.getElementById("endpoint");
+                const endpoint = document.getElementById("output");
                 endpoint.textContent =
                   "Sie müssen " +
                   Moneycounter +
@@ -33,7 +33,7 @@ function PAGE3() {
               name="zinsRadio"
               id="jaehrlich"
               onClick={(event) => {
-                const endpoint = document.getElementById("endpoint");
+                const endpoint = document.getElementById("output");
                 endpoint.textContent =
                   "Sie müssen " +
                   Moneycounter * 12 +
@@ -44,19 +44,19 @@ function PAGE3() {
           </div>
 
           <br></br>
-
+              <p2>Bis wann wird gespart?</p2>
           <div className="inputTextfield">
-            <label>Datum bis wann gespart wird Monat als zahl:</label>
-            <input type="number" id="endMonth" />
-            <label>Jahr als 4 stellige zahl:</label>
-            <input type="number" id="endYear" />
+            <label>Monat:</label>
+            <input type="number" id="endMonth" className="Datum"/>
+            <label>Jahr:</label>
+            <input type="number" id="endYear" className="Datum"/>
           </div>
 
           <br></br>
 
           <div className="inputTextfield">
             <label>Geben Sie den Zins als Prozent an: </label>
-            <input type="number" id="zins" />
+            <input type="number" step="0.01" id="zins" />
           </div>
 
           <br></br>
@@ -124,7 +124,6 @@ function PAGE3() {
             >
               Berechnen
             </button>
-            <br></br>
             <div className="resetButton">
               <button onClick={() => window.location.reload(false)}>
                 Zurücksetzen
