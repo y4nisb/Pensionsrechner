@@ -1,3 +1,4 @@
+import Navbar from "./navbar.js";
 let Moneycounter = 0; //die zeit bis wann gespart wird in monaten
 function PAGE3() {
   return (
