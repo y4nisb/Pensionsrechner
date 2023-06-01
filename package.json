@@ -1,0 +1,25 @@
+{
+  "homepage": "https://y4nisb.github.io/Pensionsrechner/",
+  "name": "pensionsrechner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd client && npm i && npm start",
+    "deploy": "cd client && npm run build && gh-pages -d build",
+    "predeploy": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/y4nisb/Pensionsrechner.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/y4nisb/Pensionsrechner/issues"
+  },
+  "dependencies": {
+    "gh-pages": "^5.0.0"
+  }
+}

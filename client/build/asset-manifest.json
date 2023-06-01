@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Pensionsrechner/static/css/main.ced99357.css",
+    "main.js": "/Pensionsrechner/static/js/main.55f2be12.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/Pensionsrechner/static/js/787.c4e7f8f9.chunk.js",
+    "index.html": "/Pensionsrechner/index.html",
+    "main.ced99357.css.map": "/Pensionsrechner/static/css/main.ced99357.css.map",
+    "main.55f2be12.js.map": "/Pensionsrechner/static/js/main.55f2be12.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/Pensionsrechner/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ced99357.css",
+    "static/js/main.55f2be12.js"
+  ]
+}
