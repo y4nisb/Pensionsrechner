@@ -9,7 +9,7 @@ import PAGE2 from "./page2.js";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <PAGE3 />
+    <PAGE1 />
   </React.StrictMode>
 );
 

@@ -1,4 +1,4 @@
-import "./pages.css";
+import "./main.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function PAGE1() {
@@ -42,32 +42,42 @@ function PAGE1() {
 
               <br></br>
 
-              <div>
-                <label>Monatliche Einlage</label>
-                <br></br>
-                <input type="text" />
-              </div>
-
-              <br></br>
-
-              <div>
+              <div id="monatlicheInputs">
                 <div>
-                  <input type="radio" name="bezEndMonat" value="bezAnfMonat" />
-                  <label>Einlage Anfang Monat</label>
+                  <label>Monatliche Einlage</label>
+                  <br></br>
+                  <input type="text" />
                 </div>
 
-                <div>
-                  <input type="radio" name="bezEndMonat" value="bezEndMonat" />
-                  <label>Einlage Ende Monat</label>
-                </div>
-              </div>
-
-              <br></br>
-
-              <div>
-                <label>Anzahl Monate</label>
                 <br></br>
-                <input type="text" />
+
+                <div>
+                  <div>
+                    <input
+                      type="radio"
+                      name="bezEndMonat"
+                      value="bezAnfMonat"
+                    />
+                    <label>Einlage Anfang Monat</label>
+                  </div>
+
+                  <div>
+                    <input
+                      type="radio"
+                      name="bezEndMonat"
+                      value="bezEndMonat"
+                    />
+                    <label>Einlage Ende Monat</label>
+                  </div>
+                </div>
+
+                <br></br>
+
+                <div>
+                  <label>Anzahl Monate</label>
+                  <br></br>
+                  <input type="text" />
+                </div>
               </div>
             </div>
           </div>
@@ -95,28 +105,30 @@ function PAGE1() {
 
               <br></br>
 
-              <div>
-                <label>Jährliche Einlage</label>
+              <div id="jährlicheInputs">
+                <div>
+                  <label>Jährliche Einlage</label>
+                  <br></br>
+                  <input type="text" />
+                </div>
+
                 <br></br>
-                <input type="text" />
-              </div>
 
-              <br></br>
+                <div>
+                  <input type="radio" name="bezAnfJahr" value="bezAnfJahr" />
+                  <label>Einlage Anfang Jahr</label>
+                  <br></br>
+                  <input type="radio" name="bezAnfJahr" value="bezEndJahr" />
+                  <label>Einlage Ende Jahr</label>
+                </div>
 
-              <div>
-                <input type="radio" name="bezAnfJahr" value="bezAnfJahr" />
-                <label>Einlage Anfang Jahr</label>
                 <br></br>
-                <input type="radio" name="bezAnfJahr" value="bezEndJahr" />
-                <label>Einlage Ende Jahr</label>
-              </div>
 
-              <br></br>
-
-              <div>
-                <label>Anzahl Jahre</label>
-                <br></br>
-                <input type="text" />
+                <div>
+                  <label>Anzahl Jahre</label>
+                  <br></br>
+                  <input type="text" />
+                </div>
               </div>
             </div>
           </div>
@@ -140,34 +152,81 @@ function PAGE1() {
               <div className="calculateButton">
                 <button
                   onClick={(event) => {
-                    const inputs = document.querySelectorAll("input");
-                    const kapital = inputs[0].valueAsNumber;
-                    const sparbetrag = inputs[3].valueAsNumber;
-                    const anzMonate = inputs[6].valueAsNumber;
-                    //const sparbetragJahr = inputs[7].valueAsNumber;
-                    const zinsbetrag = inputs[8].valueAsNumber;
-                    const textoutput = document.getElementById("output");
+                    let elStartkapital =
+                      document.getElementById("startkapitalInput");
+                    let selRadioB = document.querySelector(
+                      'input[name="timeRadio"]:checked'
+                    );
+                    let monatlichRadioB = document.querySelector(
+                      'input[value="monatlich"]'
+                    );
+                    let jährlichRadioB = document.querySelector(
+                      'input[value="jährlich"]'
+                    );
+                    let elMonatlicheEinlage = document.getElementById(
+                      "monatlicheEinlageInput"
+                    );
+                    let elJährlicheEinlage = document.getElementById(
+                      "järhlicheEinlageInput"
+                    );
+                    let elAnzahlMonate =
+                      document.getElementById("anzahlMonateInput");
+                    let elAnzahlJahre =
+                      document.getElementById("anzahlJahreInput");
+                    let elZinssatz = document.getElementById("zinssatzInput");
+                    let resultOutput = document.getElementById("output");
 
-                    const jahre_zu_sparen = (anzMonate - (anzMonate % 12)) / 12;
-                    const monate_ungespart = anzMonate % 12;
+                    // Zuteilung Startkapital Variable
+                    let kapital = elStartkapital.value;
+
+                    // Zuteilung Einlage Variable je nach Radio Button Auswahl
+                    // & Transparenz Effekt auf jeweilige nicht ausgewählte Optio
+                    let sparbetrag = 0;
+                    if (selRadioB.value == "monatlich" && elMonatlicheEinlage) {
+                      sparbetrag = elMonatlicheEinlage.value;
+                      console.log("Sparbetrag: " + sparbetrag);
+                    } else if (
+                      selRadioB.value == "jährlich" &&
+                      elJährlicheEinlage
+                    ) {
+                      sparbetrag = elJährlicheEinlage.value;
+                      console.log("Sparbetrag: " + sparbetrag);
+                    }
+
+                    // Zuteilung Anzahl Monate Variable
+                    let anzMonate = elAnzahlMonate.value;
+
+                    // Zuteilung Anzahl Jahre Variable
+                    let jahre_zu_sparen = 0;
+                    if (selRadioB.value == "jährlich") {
+                      jahre_zu_sparen = elAnzahlJahre.value;
+                    } else if (selRadioB.value == "monatlich") {
+                      jahre_zu_sparen = (anzMonate - (anzMonate % 12)) / 12;
+                    }
+
+                    // Zuteilung Zinsbetrag Variable
+                    let zinsbetrag = elZinssatz.value;
+
+                    //let monate_ungespart = anzMonate % 12;
                     let zinsaddiert = 0;
                     let zinseinkommen = 0;
 
                     //console.log(kapital, jahre_zu_sparen * (sparbetrag * 12), monate_ungespart * sparbetrag, sparbetrag, zinsbetrag / 100)
 
+                    // Logik für Output
                     for (let jahre = 0; jahre < jahre_zu_sparen; jahre++) {
                       let Zinsgeld =
                         sparbetrag * (jahre * 12) + kapital + zinsaddiert;
                       zinseinkommen = Zinsgeld * (zinsbetrag / 100);
                       zinsaddiert = zinseinkommen;
-                      console.log(zinseinkommen, zinsaddiert);
+                      console.log("Zins Einkommen: " + zinseinkommen);
+                      console.log("Zins addiert: " + zinsaddiert);
                     }
 
-                    const rueckgabe = sparbetrag * anzMonate + zinseinkommen;
-
-                    //rueckgabe = "so viel haben Sie mit uns gespart! "  + Josuha  //das eingezahlte über zeit + der Zins
-                    textoutput.textContent =
-                      "so viel haben Sie mit uns gespart! " + rueckgabe;
+                    //rueckgabe = "so viel haben Sie mit uns gespart! "  + Josuha das eingezahlte über zeit + der Zins
+                    let rueckgabe = sparbetrag * anzMonate + zinseinkommen;
+                    resultOutput.textContent =
+                      "So viel haben Sie mit uns gespart: " + rueckgabe;
                   }}
                   name="berechnen"
                 >
