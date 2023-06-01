@@ -1,5 +1,6 @@
 import "./main.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Navbar from "./navbar.js";
 
 function PAGE1() {
   return (

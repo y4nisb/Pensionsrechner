@@ -1,100 +1,31 @@
-import "./main.css";
+import React from "react";
+import Page1 from "./page1";
+import Page3 from "./page3";
+import Navbar from "./navbar.js";
+import Popup from "reactjs-popup";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
+  console.log(window.location);
+  let component;
+  switch (window.location.pathname) {
+    case "/Page1":
+      component = <Page1 />;
+      break;
+    case "/Page3":
+      component = <Page3 />;
+      break;
+  }
+
   return (
-    <div className="App">
-      <div className="titel">
-        <h1>Pensionsrechner</h1>
-      </div>
-      <div className="inputTextfield">
-        <label> Geben Sie ihr aktuelles Kapital an</label>
-        <input type="number" />
-      </div>
-      <br></br>
-      <div className="radio1">
-        <input type="radio" name="timeRadio" value="monatlich" />
-        <label>Monatlich zahlen</label>
-        <input type="radio" name="timeRadio" value="jährlich" />
-        <label>Jährlich zahlen</label>
-      </div>
-      <br></br>
-      <div className="inputTextfield">
-        <label> Wie viel möchten Sie monatlich sparen? </label>
-        <input type="number" />
-      </div>
-      <br></br>
-      <div className="monatBezahlung">
-        <div className="radio2">
-          <input type="radio" name="bezEndMonat" value="bezAnfMonat" />
-          <label>Bezahlung Anfang Monat</label>
-        </div>
+    <React.Fragment>
+      <Navbar />
+      <Routes>
+        <Route path="/page1" element={<Page1 />} />
 
-        <div className="radio3">
-          <input type="radio" name="bezEndMonat" value="bezEndMonat" />
-          <label>Bezahlung Ende Monat</label>
-        </div>
-      </div>
-      <br></br>
-      <div className="inputTextfield">
-        <label> Wie viele Monate wollen sie sparen? </label>
-        <input type="number" />
-      </div>
-
-      <br></br>
-      <div className="inputTextfield">
-        <label> Geben Sie den Zins in Prozent an </label>
-        <input type="number" />
-      </div>
-      <br></br>
-      <div className="radio4">
-        <input type="radio" name="bezAnfJahr" value="bezAnfJahr" />
-        <label>Einlage Anfang Jahr</label>
-        <input type="radio" name="bezAnfJahr" value="bezEndJahr" />
-        <label>Einlage Ende Jahr</label>
-      </div>
-      <div className="outputAusrechnen">
-        <p id="output"></p>
-      </div>
-      <div className="berechnenButton">
-        <button
-          onClick={(event) => {
-            const inputs = document.querySelectorAll("input");
-            const kapital = inputs[0].valueAsNumber;
-            const sparbetrag = inputs[3].valueAsNumber;
-            const anzMonate = inputs[6].valueAsNumber;
-            //const sparbetragJahr = inputs[7].valueAsNumber;
-            const zinsbetrag = inputs[7].valueAsNumber;
-            const textoutput = document.getElementById("output");
-
-            const jahre_zu_sparen = (anzMonate - (anzMonate % 12)) / 12;
-            const monate_ungespart = anzMonate % 12;
-            let zinsaddiert = 0;
-            let zinseinkommen = 0;
-
-            //console.log(kapital, jahre_zu_sparen * (sparbetrag * 12), monate_ungespart * sparbetrag, sparbetrag, zinsbetrag / 100)
-
-            for (let jahre = 0; jahre < jahre_zu_sparen; jahre++) {
-              let Zinsgeld = sparbetrag * (jahre * 12) + kapital + zinsaddiert;
-              zinseinkommen = Zinsgeld * (zinsbetrag / 100);
-              zinsaddiert = zinseinkommen;
-              console.log(zinseinkommen, zinsaddiert);
-            }
-
-            const rueckgabe = sparbetrag * anzMonate + zinseinkommen;
-
-            //rueckgabe = "so viel haben Sie mit uns gespart! "  + Josuha  //das eingezahlte über zeit + der Zins
-            textoutput.textContent =
-              "so viel haben Sie mit uns gespart! " + rueckgabe;
-          }}
-          name="berechnen"
-        >
-          Berechnen
-        </button>
-      </div>
-      <div className="reset">
-        <button onClick={() => window.location.reload(false)}>reset</button>
-      </div>
-    </div>
+        <Route path="/page3" element={<Page3 />} />
+      </Routes>
+    </React.Fragment>
   );
 }
 

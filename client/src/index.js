@@ -1,16 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.js";
+import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import PAGE1 from "./page1.js"
 import PAGE3 from "./page3.js";
-import PAGE1 from "./page1.js";
-import PAGE2 from "./page2.js";
+import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <PAGE1 />
-  </React.StrictMode>
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function
