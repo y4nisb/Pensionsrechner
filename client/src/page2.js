@@ -1,4 +1,4 @@
-import "./pages.css";
+import "./main.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function PAGE2() {
@@ -66,6 +66,8 @@ function PAGE2() {
                 </div>
               </div>
             </div>
+
+            <br></br>
 
             <div className="calculateButton">
               <button

@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.js";
 import reportWebVitals from "./reportWebVitals";
-import PAGE3 from "./page3";
+import PAGE3 from "./page3.js";
 import PAGE1 from "./page1.js";
 import PAGE2 from "./page2.js";
 

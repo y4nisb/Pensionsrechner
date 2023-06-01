@@ -1,4 +1,4 @@
-import "./pages.css";
+import "./main.css";
 
 function App() {
   return (
@@ -39,11 +39,7 @@ function App() {
         <label> Wie viele Monate wollen sie sparen? </label>
         <input type="number" />
       </div>
-      <br></br>
-      <div className="inputTextfield">
-        <label> Wie viel möchten Sie im Jahr sparen? </label>
-        <input type="number" />
-      </div>
+
       <br></br>
       <div className="inputTextfield">
         <label> Geben Sie den Zins in Prozent an </label>
@@ -67,7 +63,7 @@ function App() {
             const sparbetrag = inputs[3].valueAsNumber;
             const anzMonate = inputs[6].valueAsNumber;
             //const sparbetragJahr = inputs[7].valueAsNumber;
-            const zinsbetrag = inputs[8].valueAsNumber;
+            const zinsbetrag = inputs[7].valueAsNumber;
             const textoutput = document.getElementById("output");
 
             const jahre_zu_sparen = (anzMonate - (anzMonate % 12)) / 12;
@@ -95,7 +91,6 @@ function App() {
           Berechnen
         </button>
       </div>
-
       <div className="reset">
         <button onClick={() => window.location.reload(false)}>reset</button>
       </div>

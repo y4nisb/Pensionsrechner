@@ -7,10 +7,18 @@
   text-decoration: underline;
 }
 
-.gugus {
+.page {
   font-family: Arial, sans-serif;
   text-align: center;
   font-size: 120%;
+}
+
+.Datum{
+  width: 5%;
+}
+
+.resetButton{
+  margin-top: 10px;
 }
 
 .calculateButton button,
@@ -18,4 +26,9 @@
   background-color: rgb(175, 172, 172);
   width: 300px;
   height: 50px;
+}
+
+.notSelected {
+  opacity: 0.5;
+  pointer-events: none;
 }
