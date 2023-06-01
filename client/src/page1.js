@@ -23,7 +23,20 @@ function PAGE1() {
               <br></br>
 
               <div>
-                <input type="radio" name="timeRadio" value="monatlich" />
+                <input
+                  type="radio"
+                  name="timeRadio"
+                  value="monatlich"
+                  onClick={(event) => {
+                    let monatlicheInputs =
+                      document.getElementById("monatlicheInputs");
+                    let jährlicheInputs =
+                      document.getElementById("jährlicheInputs");
+
+                    jährlicheInputs.classList.add("notSelected");
+                    monatlicheInputs.classList.remove("notSelected");
+                  }}
+                />
                 <label>Monatlich zahlen</label>
               </div>
 
@@ -63,7 +76,20 @@ function PAGE1() {
               <br></br>
 
               <div>
-                <input type="radio" name="timeRadio" value="jährlich" />
+                <input
+                  type="radio"
+                  name="timeRadio"
+                  value="jährlich"
+                  onClick={(event) => {
+                    let monatlicheInputs =
+                      document.getElementById("monatlicheInputs");
+                    let jährlicheInputs =
+                      document.getElementById("jährlicheInputs");
+
+                    monatlicheInputs.classList.add("notSelected");
+                    jährlicheInputs.classList.remove("notSelected");
+                  }}
+                />
                 <label>Jährlich zahlen</label>
               </div>
 
