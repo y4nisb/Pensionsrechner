@@ -4,6 +4,7 @@ import Page3 from "./page3";
 import Navbar from "./navbar.js";
 import Popup from "reactjs-popup";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   console.log(window.location);
