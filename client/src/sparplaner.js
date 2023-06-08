@@ -1,6 +1,6 @@
 import Navbar from "./navbar.js";
 let Moneycounter = 0; //die zeit bis wann gespart wird in monaten
-function PAGE3() {
+function sparplaner() {
   return (
     <>
       <div className="page">
@@ -136,4 +136,4 @@ function PAGE3() {
     </>
   );
 }
-export default PAGE3;
+export default sparplaner;

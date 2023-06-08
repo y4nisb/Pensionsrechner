@@ -1,6 +1,6 @@
 import React from "react";
-import Page1 from "./page1";
-import Page3 from "./page3";
+import Sparrechner from "./sparrechner";
+import Sparplaner from "./sparplaner";
 import Navbar from "./navbar.js";
 import Popup from "reactjs-popup";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -10,11 +10,11 @@ function App() {
   console.log(window.location);
   let component;
   switch (window.location.pathname) {
-    case "/Page1":
-      component = <Page1 />;
+    case "/sparrechner":
+      component = <Sparrechner />;
       break;
-    case "/Page3":
-      component = <Page3 />;
+    case "/sparplaner":
+      component = <Sparplaner />;
       break;
   }
 
@@ -22,9 +22,9 @@ function App() {
     <React.Fragment>
       <Navbar />
       <Routes>
-        <Route path="/page1" element={<Page1 />} />
+        <Route path="/sparrechner" element={<Sparrechner />} />
 
-        <Route path="/page3" element={<Page3 />} />
+        <Route path="/sparplaner" element={<Sparplaner />} />
       </Routes>
     </React.Fragment>
   );

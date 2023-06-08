@@ -2,7 +2,7 @@ import "./main.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./navbar.js";
 
-function PAGE1() {
+function sparrechner() {
   return (
     <div className="page">
       <div className="container">
@@ -234,7 +234,7 @@ function PAGE1() {
                     let rueckgabe = sparbetrag * anzMonate + zinseinkommen;
                     if (rueckgabe) {
                       resultOutput.textContent =
-                      "So viel haben Sie mit uns gespart: " + rueckgabe;
+                        "So viel haben Sie mit uns gespart: " + rueckgabe;
                     }
                   }}
                   name="berechnen"
@@ -243,13 +243,10 @@ function PAGE1() {
                 </button>
               </div>
 
-              <div className="row">
-                <div className="col-8"></div>
-                <div className="col-4">
-                  <div className="outputLabel">
-                    <p id="output"></p>
-                  </div>
-                </div>
+              <br></br>
+
+              <div className="outputLabel">
+                <p id="output"></p>
               </div>
 
               <div className="resetButton">
@@ -265,4 +262,4 @@ function PAGE1() {
   );
 }
 
-export default PAGE1;
+export default sparrechner;
