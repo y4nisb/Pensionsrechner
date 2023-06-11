@@ -148,7 +148,10 @@ function sparrechner() {
               </div>
 
               <br></br>
-              <br></br>
+
+              <div className="outputLabel">
+                <p id="output"></p>
+              </div>
 
               <div className="calculateButton">
                 <button
@@ -241,12 +244,6 @@ function sparrechner() {
                 >
                   Berechnen
                 </button>
-              </div>
-
-              <br></br>
-
-              <div className="outputLabel">
-                <p id="output"></p>
               </div>
 
               <div className="resetButton">
