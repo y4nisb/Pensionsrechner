@@ -14,6 +14,9 @@ function Navbar() {
       <header>
         <h1>FinanzTools</h1>
         <nav ref={navRef}>
+          <a href onClick={() => navigate("/home")}>
+            Start
+          </a>
           <a href onClick={() => navigate("/sparrechner")}>
             Sparrechner
           </a>

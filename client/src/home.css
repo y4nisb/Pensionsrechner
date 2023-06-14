@@ -1,0 +1,44 @@
+.homepage {
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.Willkommen {
+  margin-bottom: 40px;
+}
+
+.block-text {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.text1,
+.text2,
+.text3,
+.text4,
+.text5,
+.schlusstext {
+  width: 300px;
+  padding: 20px;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.schlusstext {
+  background-color: #e1e1e1;
+  font-weight: bold;
+}
