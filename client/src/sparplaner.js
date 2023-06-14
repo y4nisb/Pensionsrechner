@@ -1,5 +1,103 @@
-import Navbar from "./navbar.js";
-let Moneycounter = 0; //die zeit bis wann gespart wird in monaten
+import { saveAs } from "file-saver";
+import {
+  pdf,
+  Document,
+  Page,
+  Text,
+  View,
+  StyleSheet,
+} from "@react-pdf/renderer";
+import * as XLSX from "xlsx";
+
+let Moneycounter = 0; // the time until saving is done in months
+
+function generateData(endkapital, zahlungstyp, monat, jahr, zinssatz, output) {
+  const zielMonat = getMonthName(monat);
+  const zielJahr = jahr.toString();
+
+  const pdfData = (
+    <Document>
+      <Page size="A4">
+        <View style={styles.container}>
+          <Text style={[styles.title, { marginTop: "1cm" }]}>Sparplaner</Text>
+
+          <View style={styles.row}>
+            <Text style={styles.cellLabel}>Gewünschtes Endkapital:</Text>
+            <Text style={styles.cellValue}>{endkapital}</Text>
+          </View>
+
+          <View style={styles.row}>
+            <Text style={styles.cellLabel}>Zahlungstyp:</Text>
+            <Text style={styles.cellValue}>{zahlungstyp}</Text>
+          </View>
+
+          <View style={styles.row}>
+            <Text style={styles.cellLabel}>Zieldatum:</Text>
+            <Text style={styles.cellValue}>
+              {zielMonat} {zielJahr}
+            </Text>
+          </View>
+
+          <View style={styles.row}>
+            <Text style={styles.cellLabel}>Zinssatz:</Text>
+            <Text style={styles.cellValue}>{zinssatz}%</Text>
+          </View>
+
+            <Text style={[styles.resultValue, { marginTop: "1cm" }]}>{output}</Text>
+        </View>
+      </Page>
+    </Document>
+  );
+
+  return { pdfData };
+}
+
+function getMonthName(month) {
+  const monthNames = [
+    "Januar",
+    "Februar",
+    "März",
+    "April",
+    "Mai",
+    "Juni",
+    "Juli",
+    "August",
+    "September",
+    "Oktober",
+    "November",
+    "Dezember",
+  ];
+
+  return monthNames[month - 1];
+}
+
+const styles = StyleSheet.create({
+  container: {
+    margin: "1cm",
+  },
+  title: {
+    fontSize: 30,
+    marginBottom: "0.5cm",
+    textAlign: "center",
+  },
+  row: {
+    flexDirection: "row",
+    marginBottom: "0.3cm",
+  },
+  cellLabel: {
+    width: "50%",
+    marginRight: "0.3cm",
+    fontWeight: "bold",
+  },
+  cellValue: {
+    width: "50%",
+  },
+  resultValue: {
+    textAlign: "center",
+    textDecoration: "underline",
+  },
+});
+
 function sparplaner() {
   return (
     <>
@@ -97,18 +195,6 @@ function sparplaner() {
                 const zins = parseInt(document.getElementById("zins").value);
                 const output = document.getElementById("output");
 
-                console.log(
-                  year,
-                  month,
-                  jaehrlichZahlen,
-                  ziel,
-                  now,
-                  year,
-                  endMonth,
-                  endYear,
-                  zins
-                );
-
                 if (endYear > year) {
                   if (endMonth < 13 && endMonth > 0) {
                     if (monatlichZahlen.checked) {
@@ -150,6 +236,8 @@ function sparplaner() {
                   output.textContent = "Geben sie ein valides Jahr an";
                   document.getElementById("output").classList.remove("hidden");
                 }
+
+                document.getElementById("errorText").classList.add("hidden");
               }}
             >
               Berechnen
@@ -158,6 +246,70 @@ function sparplaner() {
               <button onClick={() => window.location.reload(false)}>
                 Zurücksetzen
               </button>
+            </div>
+
+            <br></br>
+
+            <div className="downloadButton">
+              <button
+                onClick={() => {
+                  const endkapitalInput = document.getElementById("endkapital");
+                  const monatlichZahlen = document.getElementById("monatlich");
+                  const jaehrlichZahlen = document.getElementById("jaehrlich");
+                  const endMonthInput = document.getElementById("endMonth");
+                  const endYearInput = document.getElementById("endYear");
+                  const zinsInput = document.getElementById("zins");
+                  const errorText = document.getElementById("errorText");
+                  let resultOutput = document.getElementById("output");
+                  let monatOderJahr = "";
+
+                  if (monatlichZahlen.checked) {
+                    monatOderJahr = "Monatliche Einlage";
+                  } else if (jaehrlichZahlen.checked) {
+                    monatOderJahr = "Jährliche Einlage";
+                  }
+
+                  if (
+                    endkapitalInput.value === "" ||
+                    endMonthInput.value === "" ||
+                    endYearInput.value === "" ||
+                    zinsInput.value === ""
+                  ) {
+                    errorText.textContent = "Bitte fülle alle Eingaben aus";
+                    errorText.classList.remove("hidden");
+                    return;
+                  }
+
+                  const { pdfData } = generateData(
+                    endkapitalInput.value,
+                    monatOderJahr,
+                    endMonthInput.value,
+                    endYearInput.value,
+                    zinsInput.value,
+                    resultOutput.textContent
+                  );
+                  console.log(endMonthInput.value);
+                  pdf(pdfData)
+                    .toBlob()
+                    .then((blob) => {
+                      const reader = new FileReader();
+                      reader.onloadend = () => {
+                        const pdfDataUrl = reader.result;
+                        const link = document.createElement("a");
+                        link.href = pdfDataUrl;
+                        link.download = "sparplaner_data.pdf";
+                        link.click();
+                      };
+                      reader.readAsDataURL(blob);
+                    });
+                }}
+              >
+                Download
+              </button>
+            </div>
+
+            <div className="errorMessage">
+              <p id="errorText" className="hidden"></p>
             </div>
           </div>
         </div>
