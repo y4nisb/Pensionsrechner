@@ -15,10 +15,10 @@ app.listen(3001, () => {
   console.log("Your server is running on 3001");
 });
 
-app.post("/create", (req, res) => {
-  const prename = req.body.PreName;
-  const sirname = req.body.sirname;
-  const adress = req.body.adress;
+app.post("/create/:prename/:sirname/:adress", (req, res) => {
+  const prename = req.params.PreName;
+  const sirname = req.params.sirname;
+  const adress = req.params.adress;
   db.query(
     "select * from TUser where UserAdress = ? and UserPrename = ? and UserSirname = ?",
     [adress, prename, sirname],
@@ -33,7 +33,8 @@ app.post("/create", (req, res) => {
           [prename, sirname, usermail, userpassword],
           (err, result) => {
             if (err) {
-              console.log(err);
+              //console.log(err);
+              res.send(err);
             } else {
               res.send({ message: "der User wurde erstellt" });
             }
@@ -44,16 +45,17 @@ app.post("/create", (req, res) => {
   );
 });
 
-app.get("/einausgaben", (req, res) => {
-  const prename = req.body.PreName;
-  const sirname = req.body.sirname;
-  const adress = req.body.adress;
+app.get("/einausgaben/:prename/:sirname/:adress", (req, res) => {
+  const prename = req.params.PreName;
+  const sirname = req.params.sirname;
+  const adress = req.params.adress;
   db.query(
-    "SELECT * FROM TEinAusgaben where userId IN(SELECT userId WHERE UserAdress = ? and UserPrename = ? and UserSirname = ?)",
+    "SELECT * FROM T where UserId IN(SELECT userId WHERE UserAdress = ? and UserPrename = ? and UserSirname = ?)",
     [adress, prename, sirname],
     (err, result) => {
       if (err) {
         //console.log(err);
+        res.send(err);
       } else {
         //console.log(result);
         res.send(result);
