@@ -43,7 +43,9 @@ function generateData(endkapital, zahlungstyp, monat, jahr, zinssatz, output) {
             <Text style={styles.cellValue}>{zinssatz}%</Text>
           </View>
 
-            <Text style={[styles.resultValue, { marginTop: "1cm" }]}>{output}</Text>
+          <Text style={[styles.resultValue, { marginTop: "1cm" }]}>
+            {output}
+          </Text>
         </View>
       </Page>
     </Document>
@@ -174,143 +176,147 @@ function sparplaner() {
             <p class="hidden" id="output"></p>
           </div>
 
-          <div className="calculateButton">
-            <button
-              id="berechenenButton"
-              onClick={(event) => {
-                const monatlichZahlen = document.getElementById("monatlich");
-                const jaehrlichZahlen = document.getElementById("jaehrlich");
-                const ziel = parseInt(
-                  document.getElementById("endkapital").value
-                );
-                const now = new Date();
-                const year = now.getFullYear();
-                const month = now.getMonth() + 1;
-                const endMonth = parseInt(
-                  document.getElementById("endMonth").value
-                );
-                const endYear = parseInt(
-                  document.getElementById("endYear").value
-                );
-                const zins = parseInt(document.getElementById("zins").value);
-                const output = document.getElementById("output");
+          <button
+            className="cooleButtons"
+            id="berechenenButton"
+            onClick={(event) => {
+              const monatlichZahlen = document.getElementById("monatlich");
+              const jaehrlichZahlen = document.getElementById("jaehrlich");
+              const ziel = parseInt(
+                document.getElementById("endkapital").value
+              );
+              const now = new Date();
+              const year = now.getFullYear();
+              const month = now.getMonth() + 1;
+              const endMonth = parseInt(
+                document.getElementById("endMonth").value
+              );
+              const endYear = parseInt(
+                document.getElementById("endYear").value
+              );
+              const zins = parseInt(document.getElementById("zins").value);
+              const output = document.getElementById("output");
 
-                if (endYear > year) {
-                  if (endMonth < 13 && endMonth > 0) {
-                    if (monatlichZahlen.checked) {
-                      const anzYear = endYear - year;
-                      const mathpower = Math.pow(zins / 100 + 1, anzYear);
-                      const Zahlung = (ziel * (zins / 100)) / (mathpower - 1);
-                      console.log(Zahlung, mathpower);
-                      Moneycounter = (Zahlung - (Zahlung % 1)) / 12;
-                      output.textContent =
-                        "Sie müssen " +
-                        Moneycounter +
-                        " Monatlich einzahlen um den Betrag bis dann zu erhalten.";
+              if (endYear > year) {
+                if (endMonth < 13 && endMonth > 0) {
+                  if (monatlichZahlen.checked) {
+                    const anzYear = endYear - year;
+                    const mathpower = Math.pow(zins / 100 + 1, anzYear);
+                    const Zahlung = (ziel * (zins / 100)) / (mathpower - 1);
+                    console.log(Zahlung, mathpower);
+                    Moneycounter = (Zahlung - (Zahlung % 1)) / 12;
+                    output.textContent =
+                      "Sie müssen " +
+                      Moneycounter +
+                      " Monatlich einzahlen um den Betrag bis dann zu erhalten.";
 
-                      document
-                        .getElementById("output")
-                        .classList.remove("hidden");
-                    } else if (jaehrlichZahlen.checked) {
-                      const anzYear = endYear - year;
-                      const mathpower = Math.pow(zins / 100 + 1, anzYear);
-                      const Zahlung = (ziel * (zins / 100)) / (mathpower - 1);
-                      console.log(Zahlung, mathpower);
-                      Moneycounter = (Zahlung - (Zahlung % 1)) / 12;
-                      output.textContent =
-                        "Sie müssen " +
-                        Moneycounter * 12 +
-                        " Jährlich einzahlen um den Betrag bis dann zu erhalten.";
+                    document
+                      .getElementById("output")
+                      .classList.remove("hidden");
+                  } else if (jaehrlichZahlen.checked) {
+                    const anzYear = endYear - year;
+                    const mathpower = Math.pow(zins / 100 + 1, anzYear);
+                    const Zahlung = (ziel * (zins / 100)) / (mathpower - 1);
+                    console.log(Zahlung, mathpower);
+                    Moneycounter = (Zahlung - (Zahlung % 1)) / 12;
+                    output.textContent =
+                      "Sie müssen " +
+                      Moneycounter * 12 +
+                      " Jährlich einzahlen um den Betrag bis dann zu erhalten.";
 
-                      document
-                        .getElementById("output")
-                        .classList.remove("hidden");
-                    }
-                  } else {
-                    output.textContent = "Geben sie ein validen Monat an";
                     document
                       .getElementById("output")
                       .classList.remove("hidden");
                   }
                 } else {
-                  output.textContent = "Geben sie ein valides Jahr an";
+                  output.textContent = "Geben sie ein validen Monat an";
                   document.getElementById("output").classList.remove("hidden");
                 }
+              } else {
+                output.textContent = "Geben sie ein valides Jahr an";
+                document.getElementById("output").classList.remove("hidden");
+              }
 
-                document.getElementById("errorText").classList.add("hidden");
+              document.getElementById("errorText").classList.add("hidden");
+            }}
+          >
+            Berechnen
+          </button>
+
+          <br></br>
+          <br></br>
+
+          <button
+            className="cooleButtons"
+            onClick={() => window.location.reload(false)}
+          >
+            Zurücksetzen
+          </button>
+
+          <br></br>
+          <br></br>
+
+          <div className="downloadButton">
+            <button
+              className="cooleButtons"
+              onClick={() => {
+                const endkapitalInput = document.getElementById("endkapital");
+                const monatlichZahlen = document.getElementById("monatlich");
+                const jaehrlichZahlen = document.getElementById("jaehrlich");
+                const endMonthInput = document.getElementById("endMonth");
+                const endYearInput = document.getElementById("endYear");
+                const zinsInput = document.getElementById("zins");
+                const errorText = document.getElementById("errorText");
+                let resultOutput = document.getElementById("output");
+                let monatOderJahr = "";
+
+                if (monatlichZahlen.checked) {
+                  monatOderJahr = "Monatliche Einlage";
+                } else if (jaehrlichZahlen.checked) {
+                  monatOderJahr = "Jährliche Einlage";
+                }
+
+                if (
+                  endkapitalInput.value === "" ||
+                  endMonthInput.value === "" ||
+                  endYearInput.value === "" ||
+                  zinsInput.value === ""
+                ) {
+                  errorText.textContent = "Bitte fülle alle Eingaben aus";
+                  errorText.classList.remove("hidden");
+                  return;
+                }
+
+                const { pdfData } = generateData(
+                  endkapitalInput.value,
+                  monatOderJahr,
+                  endMonthInput.value,
+                  endYearInput.value,
+                  zinsInput.value,
+                  resultOutput.textContent
+                );
+                console.log(endMonthInput.value);
+                pdf(pdfData)
+                  .toBlob()
+                  .then((blob) => {
+                    const reader = new FileReader();
+                    reader.onloadend = () => {
+                      const pdfDataUrl = reader.result;
+                      const link = document.createElement("a");
+                      link.href = pdfDataUrl;
+                      link.download = "sparplaner_data.pdf";
+                      link.click();
+                    };
+                    reader.readAsDataURL(blob);
+                  });
               }}
             >
-              Berechnen
+              Download
             </button>
-            <div className="resetButton">
-              <button onClick={() => window.location.reload(false)}>
-                Zurücksetzen
-              </button>
-            </div>
+          </div>
 
-            <br></br>
-
-            <div className="downloadButton">
-              <button
-                onClick={() => {
-                  const endkapitalInput = document.getElementById("endkapital");
-                  const monatlichZahlen = document.getElementById("monatlich");
-                  const jaehrlichZahlen = document.getElementById("jaehrlich");
-                  const endMonthInput = document.getElementById("endMonth");
-                  const endYearInput = document.getElementById("endYear");
-                  const zinsInput = document.getElementById("zins");
-                  const errorText = document.getElementById("errorText");
-                  let resultOutput = document.getElementById("output");
-                  let monatOderJahr = "";
-
-                  if (monatlichZahlen.checked) {
-                    monatOderJahr = "Monatliche Einlage";
-                  } else if (jaehrlichZahlen.checked) {
-                    monatOderJahr = "Jährliche Einlage";
-                  }
-
-                  if (
-                    endkapitalInput.value === "" ||
-                    endMonthInput.value === "" ||
-                    endYearInput.value === "" ||
-                    zinsInput.value === ""
-                  ) {
-                    errorText.textContent = "Bitte fülle alle Eingaben aus";
-                    errorText.classList.remove("hidden");
-                    return;
-                  }
-
-                  const { pdfData } = generateData(
-                    endkapitalInput.value,
-                    monatOderJahr,
-                    endMonthInput.value,
-                    endYearInput.value,
-                    zinsInput.value,
-                    resultOutput.textContent
-                  );
-                  console.log(endMonthInput.value);
-                  pdf(pdfData)
-                    .toBlob()
-                    .then((blob) => {
-                      const reader = new FileReader();
-                      reader.onloadend = () => {
-                        const pdfDataUrl = reader.result;
-                        const link = document.createElement("a");
-                        link.href = pdfDataUrl;
-                        link.download = "sparplaner_data.pdf";
-                        link.click();
-                      };
-                      reader.readAsDataURL(blob);
-                    });
-                }}
-              >
-                Download
-              </button>
-            </div>
-
-            <div className="errorMessage">
-              <p id="errorText" className="hidden"></p>
-            </div>
+          <div className="errorMessage">
+            <p id="errorText" className="hidden"></p>
           </div>
         </div>
       </div>
