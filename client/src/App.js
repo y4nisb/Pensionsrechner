@@ -3,9 +3,10 @@ import Sparrechner from "./sparrechner";
 import Sparplaner from "./sparplaner";
 import Einlagen from "./einlagen";
 import Navbar from "./navbar.js";
-import { BrowserRouter as Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./home";
+import Popup from "reactjs-popup";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   console.log(window.location);

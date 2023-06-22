@@ -8,6 +8,8 @@ import {
   View,
   StyleSheet,
 } from "@react-pdf/renderer";
+import Navbar from "./navbar.js";
+
 
 function generateData(
   startkapital,
