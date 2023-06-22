@@ -14,7 +14,7 @@
 }
 
 .Datum {
-  width: 5%;
+  width: 6%;
 }
 
 .resetButton,
@@ -43,6 +43,7 @@
 table {
   border-collapse: collapse;
   width: 100%;
+  margin-top: 10px;
 }
 
 table td,
@@ -65,4 +66,8 @@ table th {
   text-align: left;
   background-color: #5fb0ed;
   color: white;
+}
+
+input.inputfuerEinAuslage {
+  margin-bottom: 8px;
 }

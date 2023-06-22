@@ -22,8 +22,8 @@ app.get(["/einlagen", "/sparplaner", "/sparrechner"], (req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
-app.post("api/create/:prename/:sirname/:adress", (req, res) => {
-  const prename = req.params.PreName;
+app.post("/create/:prename/:sirname/:adress", (req, res) => {
+  const prename = req.params.prename;
   const sirname = req.params.sirname;
   const adress = req.params.adress;
   db.query(
@@ -32,7 +32,7 @@ app.post("api/create/:prename/:sirname/:adress", (req, res) => {
     (err, result) => {
       if (err) {
         console.log(err);
-      } else if (result.length > 0) {
+      } else if (result.data.length > 0) {
         res.send({ message: "der User existiert" });
       } else {
         db.query(
@@ -47,6 +47,40 @@ app.post("api/create/:prename/:sirname/:adress", (req, res) => {
             }
           }
         );
+      }
+    }
+  );
+});
+
+app.post("/createEinAusgaben/:var1/:var2/:var3", (req, res) => {
+  const var1 = req.params.var1;
+  const var2 = req.params.var2;
+  const var3 = req.params.var3;
+  db.query(
+    "INSERT INTO TBewegungen (, , ) VALUES (?,?,?)",
+    [, ,],
+    (err, result) => {
+      if (err) {
+        //console.log(err);
+        res.send(err);
+      } else {
+        res.send({ message: "erfolgreich erstellt" });
+      }
+    }
+  );
+});
+
+app.delete("/deleteEinAusgaben/:EinlagenId", (req, res) => {
+  const EinlagenId = req.params.EinlagenId;
+  db.query(
+    "DELETE FROM TBewegungen WHERE EinlagenId = (?) ",
+    [EinlagenId],
+    (err, result) => {
+      if (err) {
+        //console.log(err);
+        res.send(err);
+      } else {
+        res.send({ message: "erfolgreich gelöscht" });
       }
     }
   );

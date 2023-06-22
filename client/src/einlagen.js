@@ -7,14 +7,16 @@ function einlagen() {
     <div className="Page">
       <div className="container">
         <div className="text-center"></div>
-        <h1>Einlagen und Ausgaben</h1>
-        <h2>EinAuslagen</h2>
+        <h1>Einlagen Auslagen Zinsveränderungen</h1>
+        <h2>Kundendaten:</h2>
         <label>Vorname</label>
-        <input type="text" id="prename"></input>
+        <input type="text" id="prename" className="inputfuerEinAuslage"></input>
+        <br></br>
         <label>Nachname</label>
-        <input type="text" id="sirname"></input>
+        <input type="text" id="sirname" className="inputfuerEinAuslage"></input>
+        <br></br>
         <label>Adresse</label>
-        <input type="text" id="adress"></input>
+        <input type="text" id="adress" className="inputfuerEinAuslage"></input>
         <br></br>
         <div className="anmeldeButton">
           <button
@@ -33,7 +35,7 @@ function einlagen() {
                   const rueckgabe = document.getElementById("rueckgabe");
                   console.log(res.data);
                   rueckgabe.innerHTML = "";
-                  if (res.data.lengt > 0) {
+                  if (res.data.length > 0) {
                     for (let x of res.data) {
                       console.log(x);
                       rueckgabe.innerHTML += `<tr>
@@ -52,8 +54,9 @@ function einlagen() {
                   }
                 });
             }}
-          ></button>
-
+          >
+            Suchen
+          </button>
           <table>
             <thead>
               <tr>
