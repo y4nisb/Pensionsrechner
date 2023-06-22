@@ -17,7 +17,8 @@
   width: 5%;
 }
 
-.resetButton {
+.resetButton,
+.anmeldeButton {
   margin-top: 10px;
 }
 
@@ -37,4 +38,31 @@
 .hidden {
   opacity: 0;
   pointer-events: none;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table td,
+table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+table tr:hover {
+  background-color: #ddd;
+}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #5fb0ed;
+  color: white;
 }

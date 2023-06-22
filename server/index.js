@@ -53,11 +53,12 @@ app.post("api/create/:prename/:sirname/:adress", (req, res) => {
 });
 
 app.get("/einausgaben/:prename/:sirname/:adress", (req, res) => {
-  const prename = req.params.PreName;
+  const prename = req.params.prename;
   const sirname = req.params.sirname;
   const adress = req.params.adress;
+  console.log(prename, sirname, adress);
   db.query(
-    "SELECT * FROM TBewegungen where UserId IN(SELECT userId FROM TUser WHERE UserAdresse = (?) and UserVorname = (?) and UserNachname = (?))",
+    "SELECT * FROM TBewegungen where UserId IN(SELECT UserId FROM TUser WHERE UserAdresse = (?) and UserVorname = (?) and UserNachname = (?))",
     [adress, prename, sirname],
     (err, result) => {
       if (err) {

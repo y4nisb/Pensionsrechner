@@ -9,7 +9,6 @@ function einlagen() {
         <div className="text-center"></div>
         <h1>Einlagen und Ausgaben</h1>
         <h2>EinAuslagen</h2>
-        <div id="rueckgabe"></div>
         <label>Vorname</label>
         <input type="text" id="prename"></input>
         <label>Nachname</label>
@@ -24,38 +23,48 @@ function einlagen() {
             onClick={(event) => {
               //nochmals mit popup anschauen + Yanis fragen
               //Hier kommt code für datenübergabe + popup für Login
-              const prename = document.getElementById("prename");
-              const sirname = document.getElementById("sirname");
-              const adress = document.getElementById("adress");
+              const prename = document.getElementById("prename").value;
+              const sirname = document.getElementById("sirname").value;
+              const adress = document.getElementById("adress").value;
+              console.log(prename, sirname, adress);
               axios
-                .get(
-                  "einausgaben/" +
-                    prename.textContent +
-                    "/" +
-                    sirname.textContent +
-                    "/" +
-                    adress.textContent
-                )
+                .get("/einausgaben/" + prename + "/" + sirname + "/" + adress)
                 .then((res) => {
-                  console.log(res.data);
                   const rueckgabe = document.getElementById("rueckgabe");
-                  for (let x = 0; res.length > 0; x++) {
-                    //einauslagen listen villeicht noch unterscheiden mit einlage auszahlung zinsänderung
-                    let EinAuslagen = document.createElement("div");
-                    let Datum = document.createElement("li");
-                    Datum.textContent = "Datum: " + res.data[x].Datum;
-                    EinAuslagen.appendChild(Datum);
-                    let Art = document.createElement("li");
-                    Art.textContent = "Art: " + res.data[x].Art;
-                    EinAuslagen.appendChild(Art);
-                    let Betrag = document.createElement("li");
-                    Betrag.textContent = "Betrag: " + res.data[x].Betrag;
-                    EinAuslagen.appendChild(Betrag);
-                    rueckgabe.appendChild(EinAuslagen);
+                  console.log(res.data);
+                  rueckgabe.innerHTML = "";
+                  if (res.data.lengt > 0) {
+                    for (let x of res.data) {
+                      console.log(x);
+                      rueckgabe.innerHTML += `<tr>
+                        <td>${x.EinlagenId}</td>
+                        <td>${x.Datum}</td>
+                        <td>${x.Art}</td>
+                        <td>${x.Betrag}</td>
+                      </tr>`;
+                    }
+                  } else {
+                    rueckgabe.innerHTML += `
+                      <tr>
+                        <td colspan="4">Nicht gefunden</td>
+                      </tr>
+                      `;
                   }
                 });
             }}
           ></button>
+
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Datum</th>
+                <th>Art</th>
+                <th>Betrag</th>
+              </tr>
+            </thead>
+            <tbody id="rueckgabe"></tbody>
+          </table>
         </div>
       </div>
     </div>
