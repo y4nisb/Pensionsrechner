@@ -1,8 +1,11 @@
 const express = require("express");
+const path = require("path");
 const app = express();
 const mysql = require("mysql2");
 
 app.use(express.json());
+
+app.use(express.static(path.join(__dirname, "build")));
 
 const db = mysql.createConnection({
   user: "SC_PensionBut",
@@ -15,12 +18,16 @@ app.listen(3001, () => {
   console.log("Your server is running on 3001");
 });
 
-app.post("/create/:prename/:sirname/:adress", (req, res) => {
+app.get(["/einlagen", "/sparplaner", "/sparrechner"], (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
+
+app.post("api/create/:prename/:sirname/:adress", (req, res) => {
   const prename = req.params.PreName;
   const sirname = req.params.sirname;
   const adress = req.params.adress;
   db.query(
-    "select * from TUser where UserAdress = ? and UserPrename = ? and UserSirname = ?",
+    "select * from TUser where UserAdresse = (?) and UserVorname = (?) and UserNachname = (?)",
     [adress, prename, sirname],
     (err, result) => {
       if (err) {
@@ -50,7 +57,7 @@ app.get("/einausgaben/:prename/:sirname/:adress", (req, res) => {
   const sirname = req.params.sirname;
   const adress = req.params.adress;
   db.query(
-    "SELECT * FROM T where UserId IN(SELECT userId WHERE UserAdress = ? and UserPrename = ? and UserSirname = ?)",
+    "SELECT * FROM TBewegungen where UserId IN(SELECT userId FROM TUser WHERE UserAdresse = (?) and UserVorname = (?) and UserNachname = (?))",
     [adress, prename, sirname],
     (err, result) => {
       if (err) {

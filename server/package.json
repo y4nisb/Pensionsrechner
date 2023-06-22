@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "author": "yanis, luca, Leon, Sami",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
     "mysql": "^2.18.1",
-    "mysql2": "^3.3.5"
+    "mysql2": "^3.4.0",
+    "path": "^0.12.7"
   }
 }
