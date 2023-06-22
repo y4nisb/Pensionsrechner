@@ -21,8 +21,7 @@
   margin-top: 10px;
 }
 
-.calculateButton button,
-.resetButton button {
+.cooleButtons {
   background-color: rgb(175, 172, 172);
   width: 300px;
   height: 50px;
