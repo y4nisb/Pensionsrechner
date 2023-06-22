@@ -23,6 +23,9 @@ function Navbar() {
           <a href onClick={() => navigate("/sparplaner")}>
             Sparplaner
           </a>
+          <a href onClick={() => navigate("/einlagen")}>
+            Einlagen
+          </a>
 
           <button className="nav-btn nav-close-btn" onClick={showNav}>
             <FaTimes />

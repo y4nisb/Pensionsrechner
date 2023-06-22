@@ -1,6 +1,7 @@
 import React from "react";
 import Sparrechner from "./sparrechner";
 import Sparplaner from "./sparplaner";
+import Einlagen from "./einlagen";
 import Navbar from "./navbar.js";
 import { BrowserRouter as Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -29,6 +30,8 @@ function App() {
         <Route path="/sparrechner" element={<Sparrechner />} />
 
         <Route path="/sparplaner" element={<Sparplaner />} />
+
+        <Route path="/einlagen" element={<Einlagen />} />
       </Routes>
     </React.Fragment>
   );
