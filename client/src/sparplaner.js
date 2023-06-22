@@ -1,4 +1,3 @@
-import { saveAs } from "file-saver";
 import {
   pdf,
   Document,
@@ -7,7 +6,6 @@ import {
   View,
   StyleSheet,
 } from "@react-pdf/renderer";
-import * as XLSX from "xlsx";
 
 let Moneycounter = 0; // the time until saving is done in months
 
@@ -187,7 +185,6 @@ function sparplaner() {
               );
               const now = new Date();
               const year = now.getFullYear();
-              const month = now.getMonth() + 1;
               const endMonth = parseInt(
                 document.getElementById("endMonth").value
               );

@@ -1,7 +1,5 @@
 import "./main.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Navbar from "./navbar.js";
-import { saveAs } from "file-saver";
 import {
   pdf,
   Document,
@@ -10,7 +8,6 @@ import {
   View,
   StyleSheet,
 } from "@react-pdf/renderer";
-import * as XLSX from "xlsx";
 
 function generateData(
   startkapital,
@@ -268,12 +265,6 @@ function sparrechner() {
                   let selRadioB = document.querySelector(
                     'input[name="timeRadio"]:checked'
                   );
-                  let monatlichRadioB = document.querySelector(
-                    'input[value="monatlich"]'
-                  );
-                  let jährlichRadioB = document.querySelector(
-                    'input[value="jährlich"]'
-                  );
                   let elMonatlicheEinlage = document.getElementById(
                     "monatlicheEinlageInput"
                   );
@@ -293,11 +284,14 @@ function sparrechner() {
                   // Zuteilung Einlage Variable je nach Radio Button Auswahl
                   let sparbetrag = 0;
                   if (selRadioB) {
-                    if (selRadioB.value == "monatlich" && elMonatlicheEinlage) {
+                    if (
+                      selRadioB.value === "monatlich" &&
+                      elMonatlicheEinlage
+                    ) {
                       sparbetrag = elMonatlicheEinlage.value;
                       console.log("Sparbetrag: " + sparbetrag);
                     } else if (
-                      selRadioB.value == "jährlich" &&
+                      selRadioB.value === "jährlich" &&
                       elJährlicheEinlage
                     ) {
                       sparbetrag = elJährlicheEinlage.value;
@@ -311,9 +305,9 @@ function sparrechner() {
                   // Zuteilung Anzahl Jahre Variable
                   let jahre_zu_sparen = 0;
                   if (selRadioB) {
-                    if (selRadioB.value == "jährlich") {
+                    if (selRadioB.value === "jährlich") {
                       jahre_zu_sparen = elAnzahlJahre.value;
-                    } else if (selRadioB.value == "monatlich") {
+                    } else if (selRadioB.value === "monatlich") {
                       jahre_zu_sparen = (anzMonate - (anzMonate % 12)) / 12;
                     }
                   }
